@@ -4,7 +4,7 @@
 
 ## Installing
 
-- Import pachinko.sql to your database
+- Import ``pachinko.sql`` to your database
 
 ### How to start
 
