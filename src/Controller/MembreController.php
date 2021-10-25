@@ -66,8 +66,8 @@ class MembreController extends Controller {
 		$this->render("list", [
 			"title" => "Recherche de membre", 
 			"results" => $fiches,
-			"totalPage" => $totalPage, // TODO pagination
-			"page" => $page // TODO pagination
+			"totalPage" => $totalPage,
+			"page" => $page
 		]);
 	}
 

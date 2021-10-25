@@ -111,8 +111,8 @@ class AnimeController extends Controller {
 		$this->render("list", [
 			"title" => "Recherche d'anime", 
 			"results" => $results,
-			"totalPage" => $totalPage, // TODO pagination
-			"page" => $page // TODO pagination
+			"totalPage" => $totalPage,
+			"page" => $page
 		]);
 	}
 
@@ -135,8 +135,8 @@ class AnimeController extends Controller {
 		$this->render("list", [
 			"title" => "Recherche d'anime", 
 			"results" => $results,
-			"totalPage" => $totalPage, // TODO pagination
-			"page" => $page // TODO pagination
+			"totalPage" => $totalPage,
+			"page" => $page
 		]);
 	}
 

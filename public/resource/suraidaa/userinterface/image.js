@@ -20,7 +20,7 @@ UserInterface.model({
 					},
 					{
 						tagName: "img",
-						className: "display-block full-width full-height", // FIXME wont not work with a bigger wrapper
+						className: "display-block full-width full-height",
 						srcset: image.getSrc("default"),
 						alt: image.getText()
 					}

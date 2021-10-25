@@ -238,7 +238,7 @@ Node²: https://developer.mozilla.org/en-US/docs/Web/API/node
 	 * @param  {string}   title 	 The content of the message
 	 * @param  {function} callback 
 	 */
-	this.listen = (context, title, callback) => { // FIXME
+	this.listen = (context, title, callback) => {
 		if (this.DEBUG === true)
 			console.log("(listen)", title)
 		_listeners.push({context, title, callback})
@@ -250,7 +250,7 @@ Node²: https://developer.mozilla.org/en-US/docs/Web/API/node
 	 * @param  {string} title 	The title of the announce
 	 * @param  {*} 			content The content of the announce
 	 */
-	this.announce = async (context, title, content) => { // FIXME
+	this.announce = async (context, title, content) => {
 		if (this.DEBUG === true)
 			console.log("(announce)", title)
 		let listeners = _listeners.filter(listener => listener.context === context && listener.title === title)

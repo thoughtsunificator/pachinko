@@ -11,7 +11,7 @@ final class TemplateTokenizer {
 	 * @param  [string] $text [description]
 	 * @return [array]       [description]
 	 */
-	public static function tokenize ($text) { // TODO Work in progress
+	public static function tokenize ($text) {
 	
 		return $tokens;
 	}

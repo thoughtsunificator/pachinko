@@ -5,7 +5,7 @@ namespace Core;
 use \Core\Router;
 use \Core\Config;
 
-abstract class Controller { // TODO since there is only one render per Request controllers should be static
+abstract class Controller {
 
 	/**
 	 * The output of the layout
@@ -23,7 +23,7 @@ abstract class Controller { // TODO since there is only one render per Request c
 	 * @param  [string] $view  The name of the view to be rendered
 	 * @param  [array]  $scope The scope of the route
 	 */
-	protected function render($view, $scope = [], $layout = null) { // TODO: errors
+	protected function render($view, $scope = [], $layout = null) {
 		if($layout === null) {
 			$layout = Config::$layout;
 		}

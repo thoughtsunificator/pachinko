@@ -37,7 +37,7 @@ final class Router {
 	 * @param  [string] $url    [description]
 	 * @return [array]         	[description]
 	 */
-	public static function getRoute($method, $url) { // TODO Work in progress
+	public static function getRoute($method, $url) {
 		$parse = parse_url($url);
 		$URItokens = URITokenizer::tokenize($parse["path"]);
 

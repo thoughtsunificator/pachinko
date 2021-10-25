@@ -4,7 +4,7 @@ namespace Core;
 
 use \Core\ORM;
 
-abstract class Entity { // TODO relationships
+abstract class Entity {
 
 	/**
 	 * @var [array]
@@ -15,17 +15,17 @@ abstract class Entity { // TODO relationships
 		$this->_fields = $fields;
 	}
 
-  public function setField($name, $value) {
-  	$this->_fields[$name] = $value;
-  }
+	public function setField($name, $value) {
+		$this->_fields[$name] = $value;
+	}
 
-  public function getField($name) {
-  	return $this->_fields[$name];
-  }
+	public function getField($name) {
+		return $this->_fields[$name];
+	}
 
-  public function getFields() {
-  	return $this->_fields;
-  }
+	public function getFields() {
+		return $this->_fields;
+	}
 
 	public function save() {
 		if (array_key_exists(static::PRIMARY_KEY, $this->_fields) === true) {
@@ -45,7 +45,7 @@ abstract class Entity { // TODO relationships
 	}
 
 	public static function findOne($params) {
-		$fetch = ORM::read(static::class, array_merge($params, ["limit" => 1]))->fetch(); // TODO: return value
+		$fetch = ORM::read(static::class, array_merge($params, ["limit" => 1]))->fetch();
 		if($fetch !== false) {
 			return new static($fetch);
 		}
@@ -61,7 +61,7 @@ abstract class Entity { // TODO relationships
 
 	public static function count($params = []) {
 		$params["column"] = "count(" . static::PRIMARY_KEY . ")";
-		$statement = ORM::read(static::class, $params); // TODO
+		$statement = ORM::read(static::class, $params);
 		return (int) $statement->fetchColumn();
 	}
 

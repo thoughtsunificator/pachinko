@@ -23,7 +23,7 @@ final class URITokenizer {
 	 * @param  [string] $text [description]
 	 * @return [array]       [description]
 	 */
-	public static function tokenize ($text) { // TODO Work in progress
+	public static function tokenize ($text) {
 		$tokens = [];
 		$characters = str_split($text);
 		$state = self::STATE_IDENTIFYING;
@@ -40,7 +40,7 @@ final class URITokenizer {
 						"buffer" => $character,
 						"bufferIndex" => $key
 					]);
-				} else if ($key === count($characters) - 1) { // no more character after that
+				} else if ($key === count($characters) - 1) {
 					$token["buffer"] .= $character;
 					$token["type"] = self::TOKEN_TYPE_NORMAL;
 					array_push($tokens, $token);
@@ -66,7 +66,7 @@ final class URITokenizer {
 					$token["buffer"] = "";
 					$token["bufferIndex"] = null;
 					$state = self::STATE_IDENTIFYING;
-				} else if ($key === count($characters) - 1) {  // no more character after that
+				} else if ($key === count($characters) - 1) {
 					$token["buffer"] .= $character;
 					$token["type"] = self::TOKEN_TYPE_NORMAL;
 					array_push($tokens, $token);
@@ -77,7 +77,6 @@ final class URITokenizer {
 						$token["type"] = self::TOKEN_TYPE_NORMAL;
 					}
 					array_push($tokens, $token);
-					// reset token
 					$token["buffer"] = $character;
 					$token["type"] = null;
 					$token["bufferIndex"] = $key;
@@ -90,12 +89,11 @@ final class URITokenizer {
 					$token["buffer"] .= $character;
 					$token["type"] = self::TOKEN_TYPE_SPECIAL;
 					array_push($tokens, $token);
-					// reset token
 					$token["buffer"] = "";
 					$token["type"] = null;
 					$token["bufferIndex"] = null;
 					$state = self::STATE_IDENTIFYING;
-				} else if ($key === count($characters) - 1) {  // no more character after that
+				} else if ($key === count($characters) - 1) {
 					$token["buffer"] .= $character;
 					$token["type"] = self::TOKEN_TYPE_NORMAL;
 					array_push($tokens, $token);

@@ -16,7 +16,7 @@ final class ORM {
 	public static function create($model) {
 		$fields = $model->getFields();
 		$instance = Database::getPDO();
-		$columnString = implode(",", array_keys($fields)); // TODO
+		$columnString = implode(",", array_keys($fields));
 		$valuesString = implode(",", array_fill(0, count($fields), "?"));
 		$query = "INSERT INTO " . $model::TABLE_NAME . " ($columnString) VALUES ($valuesString)";
 		$statement = $instance->prepare($query);
@@ -30,16 +30,16 @@ final class ORM {
 	 * @param  [array] 				$params 
 	 * @return [PDOStatement]
 	 */
-	public static function read($model, $params) { // TODO LIKE, AND, OR, combining conditions, and other clauses
+	public static function read($model, $params) {
 		$table = $model::TABLE_NAME;
 		$instance = Database::getPDO();
 		$columnText = "*";
 		$operators = [];
 		if (array_key_exists("operator", $params) === true) {
-			$operators = $params["operator"];	
+			$operators = $params["operator"];
 		}
 		if (array_key_exists("column", $params) === true) {
-			$columnText = $params["column"];	
+			$columnText = $params["column"];
 		}
 		$query = "select $columnText from $table";
 		$values = [];
@@ -52,10 +52,10 @@ final class ORM {
 					$operator = $operators[$i];
 				}
 				if($operator === "IN") {
-					array_push($columns, "$table.$key $operator (" . implode(",", array_fill(0, count($value), "?")) . ")"); // TODO operator
+					array_push($columns, "$table.$key $operator (" . implode(",", array_fill(0, count($value), "?")) . ")");
 					$values = array_merge($values, $value);
 				} else {
-					array_push($columns, "$table.$key $operator ?"); // TODO operator
+					array_push($columns, "$table.$key $operator ?");
 					array_push($values, $value);
 				}
 				$i++;
@@ -80,10 +80,10 @@ final class ORM {
 
 	/**
 	 * Update a row into the database
-	 * @param  [Entity] 			$model 	
+	 * @param  [Entity] 			$model
 	 * @return [PDOStatement]
 	 */
-	public static function update($model) { // TODO
+	public static function update($model) {
 		$instance = Database::getPDO();
 		$columns = [];
 		$values = [];
@@ -100,7 +100,7 @@ final class ORM {
 
 	/**
 	 * Delete a row into the database
-	 * @param  [Entity] 			$model  
+	 * @param  [Entity] 			$model
 	 * @return [PDOStatement]
 	 */
 	public static function delete($model) {
@@ -110,5 +110,5 @@ final class ORM {
 		$statement->execute([$model->getField($model::PRIMARY_KEY)]);
 		return $statement;
 	}
-	
+
 }
