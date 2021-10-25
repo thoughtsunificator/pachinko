@@ -1,0 +1,16 @@
+{
+	"env": "dev",
+	"layout": "heibon",
+	"title" : "Heibon",
+	"maintenance" : false,
+	"database_host": "localhost",
+	"database_dbname": "pachinko",
+	"database_user": "root",
+	"database_password": "root",
+	"database_charset": "utf8mb4",
+	"database_port": 3306,
+	"results_per_page" : 50,
+	"access_level_administrator" : 4,
+	"access_level_to_modify_history" : 4,
+	"access_level_to_modify_subscription" : 4
+}

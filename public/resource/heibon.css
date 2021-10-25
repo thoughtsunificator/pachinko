@@ -1,0 +1,232 @@
+/* Constants & Variables */
+:root {
+	--COLOR_TUNDORA: #464040;
+	--COLOR_ZAMBEZI: #605757;
+	--COLOR_HURRICANE: #807676;
+	--COLOR_DUSTSTORM: #e4c7c7;
+	--COLOR_MINESHAFT: #2b2727;
+	--COLOR_DUSTYGRAY: #9b8d8d;
+	--COLOR_DUSTYGRAY2: #a69898;
+	--COLOR_BONJOUR: #e6e2e2;
+	--COLOR_CREANCAN: #f6be5d;
+	--COLOR_TOMTHUMB: #365732;
+	--COLOR_MASALA: #3F3939;
+	--COLOR_SILVER: #c6c6c6;
+	--COLOR_AXOLOT: #546A4E;
+	--COLOR_EMPEROR: #504D4D;
+	--COLOR_ANAKIWA: #acd2ff;
+	--COLOR_HEAVYMETAL: #242d21;
+	--COLOR_GRAY: #8a8787;
+	--COLOR_TOSCA: #894242;
+	--COLOR_SEETHROUGH: rgba(0, 0, 0, 0.50);
+	--COLOR_SEETHROUGH2: rgba(0, 0, 0, 0.25);
+	--COLOR_BLUESKY: #1c2336;
+	--COLOR_LIGHTBROWN: #8a5743;
+	--COLOR_GUNPOWDER: #3b3b59;
+	--COLOR_BUNCCANEER: #713333;
+}
+
+body {
+	background-color: var(--COLOR_TUNDORA);
+	color: white;
+}
+
+a {
+	color: var(--COLOR_ANAKIWA);
+	text-decoration: none;
+}
+
+main a:hover {
+	text-decoration: underline;
+}
+
+.template-nav {
+	grid-auto-flow: column;
+	grid-column-gap: var(--SIZE_MEDIUM);
+	grid-auto-columns: max-content;
+	align-items: center;
+}
+
+.color-duststorm {
+	color: var(--COLOR_DUSTSTORM);
+}
+
+.border-color-hurricane {
+	border-color: var(--COLOR_HURRICANE);
+}
+
+.border-color-zambezi {
+	border-color: var(--COLOR_ZAMBEZI);
+}
+
+.border-color-tundora {
+	border-color: var(--COLOR_TUNDORA);
+}
+
+.border-color-dustygray2 {
+	border-color: var(--COLOR_DUSTYGRAY2);
+}
+
+.border-color-emperor {
+	border-color: var(--COLOR_EMPEROR);
+}
+
+.border-color-heavymetal {
+	border-color: var(--COLOR_HEAVYMETAL);
+}
+
+.border-color-gray {
+	border-color: var(--COLOR_GRAY);
+}
+
+.border-color-gunpowder {
+	border-color: var(--COLOR_GUNPOWDER);
+}
+
+.border-color-black {
+	border-color: black;
+}
+
+.background-color-hurricane {
+	background-color: var(--COLOR_HURRICANE);
+}
+
+.background-color-zambezi {
+	background-color: var(--COLOR_ZAMBEZI);
+}
+
+.background-color-tundora {
+	background-color: var(--COLOR_DUSTSTORM);
+}
+
+.background-color-mineshaft {
+	background-color: var(--COLOR_MINESHAFT);
+}
+
+.background-color-dustygray {
+	background-color: var(--COLOR_DUSTYGRAY);
+}
+
+.background-color-axolot {
+	background-color: var(--COLOR_AXOLOT);
+}
+
+.background-color-tomthumb {
+	background-color: var(--COLOR_TOMTHUMB);
+}
+
+.background-color-silver {
+	background-color: var(--COLOR_SILVER);
+}
+
+.background-color-tosca {
+	background-color: var(--COLOR_TOSCA);
+}
+
+.background-color-heavymetal {
+	background-color: var(--COLOR_HEAVYMETAL);
+}
+
+.background-color-masala {
+	background-color: var(--COLOR_MASALA);
+}
+
+.background-color-bluesky {
+	background-color: var(--COLOR_BLUESKY);
+}
+
+.background-color-lightbrown {
+	background-color: var(--COLOR_LIGHTBROWN);
+}
+
+.background-color-seethrough
+{
+	background-color: var(--COLOR_SEETHROUGH);
+}
+
+.background-color-seethrough2
+{
+	background-color: var(--COLOR_SEETHROUGH2);
+}
+
+.background-color-bunccaneer
+{
+	background-color: var(--COLOR_BUNCCANEER);
+}
+
+.color-bonjour {
+	color: var(--COLOR_BONJOUR);
+}
+
+.color-creamcan {
+	color: var(--COLOR_CREANCAN);
+}
+
+.color-silver {
+	color: var(--COLOR_SILVER);
+}
+
+.color-dustygray {
+	color: var(--COLOR_DUSTYGRAY);
+}
+
+.color-tundora {
+	color: var(--COLOR_TUNDORA);
+}
+
+.color-tosca {
+	color: var(--COLOR_TOSCA);
+}
+
+.color-anakiwa {
+	color: var(--COLOR_ANAKIWA);
+}
+
+.color-black {
+	color: black;
+}
+
+.color-white {
+	color: white;
+}
+
+main {
+	min-height: 55em;
+}
+
+.hover-background-color-masala:hover {
+	background-color: var(--COLOR_MASALA);
+}
+
+.hover-background-color-dustygray2:hover {
+	background-color: var(--COLOR_DUSTYGRAY2);
+}
+
+.hover-text-decoration-underline:hover {
+	text-decoration: underline;
+}
+
+.wrap {
+	padding-left: var(--SIZE_MEDIUM);
+	padding-right: var(--SIZE_MEDIUM);
+	word-break: break-all;
+}
+
+.logo {
+	color: #ffffff5c;
+	text-shadow: -10px 13px #00000059;
+}
+
+.background-image-header {
+	background-image: url("/resource/image/Dj.Max.full.891023.webp");
+}
+
+footer {
+	background-position-y: 95px;
+}
+
+.bottom-sections {
+	background: linear-gradient(#221e1e, #4b3e3e1f);
+	border-bottom: 1px solid black;
+	border-top: 1px solid var(--COLOR_EMPEROR);
+}

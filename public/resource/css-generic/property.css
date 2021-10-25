@@ -1,0 +1,18 @@
+/* Constants & Variables */
+:root {
+	/* Sizes */
+	--SIZE_WRAPPER: 62.667rem; /* 940px */
+	--SIZE_LOGO: 18.667em;
+	--SIZE_XXS: 0.333rem;  /* 2xs */
+	--SIZE_XS: 0.667rem;
+	--SIZE_SMALL: 0.867rem;
+	--SIZE_MEDIUM: 1.000rem; /* 15px */
+	--SIZE_LARGE: 1.333rem;
+	--SIZE_XL: 1.667rem;
+	--SIZE_XXL: 2.000rem; /* 2xl */
+	--SIZE_XXXL: 2.333rem; /* 3xl */
+	--SIZE_XXXXL: 2.667rem; /* 4xl */
+	--SIZE_XXXXXL: 3.000rem; /* 5xl */
+	--SIZE_HUGE: 6.000rem;
+	--SIZE_PX: 0.067rem;
+}

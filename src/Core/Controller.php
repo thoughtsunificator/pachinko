@@ -1,0 +1,41 @@
+<?php
+
+namespace Core;
+
+use \Core\Router;
+use \Core\Config;
+
+abstract class Controller { // TODO since there is only one render per Request controllers should be static
+
+	/**
+	 * The output of the layout
+	 * @var string
+	 */
+	public static $render;
+	/**
+	 * Global scope
+	 * @var array
+	 */
+	public static $scope = [];
+
+	/**
+	 * Render will read the output of the layout and save it for later use
+	 * @param  [string] $view  The name of the view to be rendered
+	 * @param  [array]  $scope The scope of the route
+	 */
+	protected function render($view, $scope = [], $layout = null) { // TODO: errors
+		if($layout === null) {
+			$layout = Config::$layout;
+		}
+		$scope = array_merge(self::$scope, $scope);
+		extract($scope);
+		$reflection = new \ReflectionClass($this);
+		$view = __DIR__ . "/../View/" . substr($reflection->getShortName(), 0, - strlen("Controller")) . "/$view.php";
+		if (file_exists($view) === true) {
+			ob_start();
+			require(__DIR__ . "/../View/Layout/". $layout . ".php");
+			self::$render = ob_get_clean();
+		}
+	}
+
+}
