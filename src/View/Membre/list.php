@@ -8,5 +8,5 @@
 		</div>
 	<?php	endforeach;	?>
 	</div>
-	<?php include(__DIR__ . "/../View/Partial/paginate.php"); ?>
+	<?php include(__DIR__ . "/../Partial/paginate.php"); ?>
 </div>
