@@ -2,12 +2,12 @@
 <html lang="fr">
 <head>
 	<meta charset="UTF-8">
-	<title><?= $title; ?> - <?= $config::$title ?></title>
+	<title><?= $title; ?> - <?= $config::$TITLE ?></title>
 	<link rel="stylesheet" href="/resource/css-generic/import.css">
 	<link rel="stylesheet" href="/resource/heibon.css">
 	<link rel="icon" type="image/x-icon" href="/favicon.ico">
 	<script src="/resource/userinterface.js"></script>
-	<?php if($config::$env === "dev"): ?>
+	<?php if($config::$ENV === "dev"): ?>
 	<script>UserInterface.DEBUG = true</script>
 	<?php endif;?>
 </head>
@@ -16,7 +16,7 @@
 	<div class="wrap display-grid grid-auto-flow-column grid-gap justify-content-flexend">
 		<span class="text-decoration-none padding-vertical-xs padding-horizontal background-color-bluesky color-bonjour" href="#"><?= $animeCount; ?> Animes</span>
 		<?php if (isset($user) === true): ?>
-		<?php if ($user->getField("access_level") >=$config::$access_level_administrator): ?>
+		<?php if ($user->getField("access_level") >=$config::$ACCESS_LEVEL_ADMINISTRATOR): ?>
 		<a class="text-decoration-none padding-vertical-xs padding-horizontal background-color-tosca color-bonjour" href="/admin">Administration</a>
 		<?php endif; ?>
 		<a class="text-decoration-none padding-vertical-xs padding-horizontal background-color-mineshaft color-bonjour hover-background-color-masala" href="/user">Mon compte</a>
@@ -27,7 +27,7 @@
 		<?php endif; ?>
 	</div>
 	<div class="wrap padding-vertical-xl">
-		<h1 class="logo"><?=$config::$title ?></h1>
+		<h1 class="logo"><?=$config::$TITLE ?></h1>
 		<div class="display-grid template-2col1frauto margin-top-xl">
 			<nav class="display-grid template-nav">
 				<a class="border-radius-2xs background-color-mineshaft padding-xs color-silver text-decoration-none hover-background-color-masala" href="/">Acceuil</a>

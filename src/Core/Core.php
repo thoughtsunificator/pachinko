@@ -10,8 +10,6 @@ use \Controller\AppController;
 
 final class Core {
 
-	public const CONFIG_PATH = "config.json";
-
 	private function __construct() {}
 
 	/**
@@ -26,17 +24,17 @@ final class Core {
 		}
 		$vars = get_class_vars(Config::class);
 		foreach ($vars as $key => $value) {
-			if(isset($env[$key])) {
-				Config::$$key = $env[$key];
-			} else if(isset($_ENV[$key])) {
+			if(isset($_ENV[$key])) {
 				Config::$$key = $_ENV[$key];
+			} else if(isset($env[$key])) {
+				Config::$$key = $env[$key];
 			}
 		}
 
 		// Path
 		define("URI", $_SERVER["REQUEST_URI"]);
 
-		if(Config::$maintenance === true) {
+		if(Config::$MAINTENANCE === true) {
 			include(__DIR__ . "/../View/Partial/maintenance.php");
 			return;
 		}
@@ -63,6 +61,7 @@ final class Core {
 			call_user_func_array(array($controller, $route["data"]['action']), $route["params"]);
 			print($controller::$render);
 		} else {
+			http_response_code(404);
 			print( "Cannot ".$_SERVER["REQUEST_METHOD"]." ". URI);
 		}
 	}

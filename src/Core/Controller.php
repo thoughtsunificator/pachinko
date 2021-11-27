@@ -25,7 +25,7 @@ abstract class Controller {
 	 */
 	protected function render($view, $scope = [], $layout = null) {
 		if($layout === null) {
-			$layout = Config::$layout;
+			$layout = Config::$LAYOUT;
 		}
 		$scope = array_merge(self::$scope, $scope);
 		extract($scope);

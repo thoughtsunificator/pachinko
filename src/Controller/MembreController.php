@@ -52,7 +52,7 @@ class MembreController extends Controller {
 			"nom" => "%" . Request::$params["nom"] . "%", 
 			"prenom" => "%" . Request::$params["prenom"] . "%"
 		];
-		$results_per_page = Config::$results_per_page;
+		$results_per_page = Config::$RESULTS_PER_PAGE;
 		$count = FichePersonne::count(["where" => $fields, "operator" => [0 => "LIKE", 1 => "LIKE"]]);
 		$totalPage = ceil($count / $results_per_page);
 		$page = 1;

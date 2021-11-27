@@ -97,7 +97,7 @@ class AnimeController extends Controller {
 
 		$filter = ["where" => $fields, "operator" => $operators];
 		$count = Anime::count($filter);
-		$results_per_page = Config::$results_per_page;
+		$results_per_page = Config::$RESULTS_PER_PAGE;
 		$totalPage = ceil($count / $results_per_page);
 		$page = 1;
 		if(array_key_exists("page", Request::$params) === true) {
@@ -122,7 +122,7 @@ class AnimeController extends Controller {
 	public function type($name) {
 		$filter = ["where" => ["type" => $name]];
 		$count = Anime::count($filter);
-		$results_per_page = Config::$results_per_page;
+		$results_per_page = Config::$RESULTS_PER_PAGE;
 		$totalPage = ceil($count / $results_per_page);
 		$page = 1;
 		if(array_key_exists("page", Request::$params) === true) {

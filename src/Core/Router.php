@@ -14,7 +14,6 @@ final class Router {
 	private function __construct() {}
 	
 	/**
-	 * [get description]
 	 * @param  [string] $url   [description]
 	 * @param  [array] 	$route [description]
 	 */
@@ -23,7 +22,6 @@ final class Router {
 	}
 
 	/**
-	 * [post description]
 	 * @param  [string] $url   [description]
 	 * @param  [array] 	$route [description]
 	 */
