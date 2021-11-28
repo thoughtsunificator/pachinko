@@ -9,8 +9,17 @@
 
 ## Installing
 
+- Rename ``.sample.env`` to ``.env.json``
+
+**PHP Built-in webserver**:
+
 - Import ``pachinko.sql`` to your database
-
-### How to start
-
 - ``php -S 0.0.0.0:8000 -t public``
+
+**Docker**:
+
+``docker-compose up``
+
+---
+
+**PS**: If you want to use your local install of nginx instead update the nginx main configuration according to the ``nginx.conf``.
