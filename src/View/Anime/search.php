@@ -40,7 +40,7 @@
 			<label for="producer">
 					Producteur : 
 					<select class="margin-top padding-xs full-width" name="producer" id="producer">
-						<option value="">Sélectionner une producteur</option>
+						<option value="">Sélectionner un producteur</option>
 						<?php foreach ($producers as $producer): ?>
 						<option value="<?= $producer->getField("value") ?>"><?= $producer->getField("value") ?></option>
 						<?php endforeach; ?>
@@ -49,9 +49,9 @@
 		</div>
 		<div>
 			<label for="studio">
-					Studio : 
+					Studio :
 					<select class="margin-top padding-xs full-width" name="studio" id="studio">
-						<option value="">Sélectionner une producteur</option>
+						<option value="">Sélectionner un studio</option>
 						<?php foreach ($studios as $studio): ?>
 						<option value="<?= $studio->getField("value") ?>"><?= $studio->getField("value") ?></option>
 						<?php endforeach; ?>

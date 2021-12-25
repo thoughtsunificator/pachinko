@@ -43,26 +43,28 @@ final class ORM {
 		}
 		$query = "select $columnText from $table";
 		$values = [];
+
+		if (array_key_exists("join", $params) === true) {
+			$query .= " ". implode($params["join"]);
+		}
+
 		if (array_key_exists("where", $params) === true) {
 			$columns = [];
-			$i = 0;
 			foreach ($params["where"] as $key => $value) {
 				$operator = "=";
-				if(array_key_exists($i, $operators) === true) {
-					$operator = $operators[$i];
+				if(array_key_exists($key, $operators) === true) {
+					$operator = $operators[$key];
 				}
 				if($operator === "IN") {
-					array_push($columns, "$table.$key $operator (" . implode(",", array_fill(0, count($value), "?")) . ")");
+					array_push($columns, (!str_contains($key, ".") ? "$table." : "")."$key $operator (" . implode(",", array_fill(0, count($value), "?")) . ")");
 					$values = array_merge($values, $value);
 				} else {
-					array_push($columns, "$table.$key $operator ?");
+					array_push($columns, (!str_contains($key, ".") ? "$table." : "")."$key $operator ?");
 					array_push($values, $value);
 				}
-				$i++;
 			}
 			$columnsText = implode(" AND ", $columns);
 			$query .= " where $columnsText";
-
 		}
 		if (array_key_exists("group", $params) === true) {
 			$query .= " group by ". $params["group"];

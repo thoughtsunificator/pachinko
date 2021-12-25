@@ -71,32 +71,41 @@ class AnimeController extends Controller {
 		$fields = [];
 		$fieldsMeta = [];
 		$operators = [];
-
-		$fields["title"] = "%" . Request::$params["title"] . "%";
-		array_push($operators, "LIKE");
+		$joins = [];
+		$fields["anime.title"] = "%" . Request::$params["title"] . "%";
+		$operators["anime.title"] = "LIKE";
+		$entity = Anime::class;
 
 		if (Request::$params["type"] !== "") {
 			$fields["type"] = Request::$params["type"];
-		}  
+		}
 		if (array_key_exists("genre", Request::$params)) {
-
-		}  
+			$entity = AnimeMeta::class;
+			$fields["anime_meta.name"] = "genre";
+			$fields["anime_meta.value"] = Request::$params["genre"];
+			$operators["anime_meta.value"] = "IN";
+		}
 		if (Request::$params["producer"] !== "") {
-
-		} 
+			$entity = AnimeMeta::class;
+			$fields["anime_meta.name"] = "producer";
+			$fields["anime_meta.value"] = Request::$params["producer"];
+		}
 		if (Request::$params["studio"] !== "") {
-	
-		} 
+			$entity = AnimeMeta::class;
+			$fields["anime_meta.name"] = "studio";
+			$fields["anime_meta.value"] = Request::$params["studio"];
+		}
 		if (Request::$params["start_date"] !== "") {
 			$fields["start_date"] = Request::$params["start_date"];
-		} 
+		}
 		if (Request::$params["end_date"] !== "") {
 			$fields["end_date"] = Request::$params["end_date"];
 		}
-
-
-		$filter = ["where" => $fields, "operator" => $operators];
-		$count = Anime::count($filter);
+		if($entity === AnimeMeta::class) {
+			array_push($joins, "INNER JOIN anime on anime.id_anime = anime_meta.id_anime");
+		}
+		$filter = ["where" => $fields, "operator" => $operators, "join" => $joins];
+		$count = $entity::count($filter);
 		$results_per_page = Config::$RESULTS_PER_PAGE;
 		$totalPage = ceil($count / $results_per_page);
 		$page = 1;
@@ -104,7 +113,7 @@ class AnimeController extends Controller {
 			$page = (int) min($totalPage, max(Request::$params["page"], 1));
 		}
 
-		$results = Anime::findAll(array_merge($filter, [
+		$results = $entity::findAll(array_merge($filter, [
 			"limit" => ($page - 1) * $results_per_page . ",$results_per_page", 
 			"order" => Request::$params["sort"]." ".Request::$params["order"]
 		]));
