@@ -17,5 +17,5 @@ final class Request {
 	
 }
 
-Request::$body = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-Request::$params = filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
+Request::$body = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+Request::$params = filter_input_array(INPUT_GET, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
