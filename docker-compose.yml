@@ -26,8 +26,6 @@ services:
 
   mariadb:
     image: mariadb:latest
-    ports:
-      - "3307:3306"
     volumes:
       - ./data/mysql:/var/lib/mysql
       - ./logs/mysql:/var/log/mysql
