@@ -20,7 +20,7 @@ class AnimeController extends Controller {
 		$anime = Anime::findOne([
 			"where" => ["id_anime" => $id]
 		]);
-		if ($anime) {
+		if (!$anime) {
 			echo "ID not found";
 		} else {
 			$metas = AnimeMeta::findAll(["where" => ["id_anime" => $id]]);
