@@ -24,7 +24,17 @@ $filterB["order"] = $order;
 	<div class="results">
 		<?php	foreach($results as $anime):	?>
 			<div class="result">
-			<a href="/anime/<?=$anime->getField('id_anime');?>"><img width="150" src="/resource/image/anime/<?= $anime->getField("cover") !== null && $anime->getField("cover") !== "" ? $anime->getField("cover") : "default.png"; ?>" alt="Image du anime"></a>
+			<?php
+			$image = "/resource/image/anime/default.png";
+			if($anime->getField("cover") !== null && $anime->getField("cover") !== "") {
+				if(str_starts_with($anime->getField("cover"), "http")) {
+					$image = $anime->getField("cover");
+				} else {
+					$image = "/resource/image/anime/". $anime->getField("cover");
+				}
+			}
+			?>
+			<a href="/anime/<?=$anime->getField('id_anime');?>"><img width="150" src="<?= $image ?>" alt="Image du anime"></a>
 				<div>
 					<?= $anime->getField('title'); ?>
 				</div>
