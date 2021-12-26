@@ -117,9 +117,12 @@ class AnimeController extends Controller {
 
 		$params = array_merge($filter, [ "limit" => ($page - 1) * $results_per_page . ",$results_per_page" ]);
 
-		if(array_key_exists("sort", Request::$params) && Request::$params["sort"] !== ""
-			&& array_key_exists("order", Request::$params) && Request::$params["order"] !== "") {
-			$params["order"] = Request::$params["sort"]." ".Request::$params["order"];
+		if(array_key_exists("sort", Request::$params) && in_array(Request::$params["sort"], ["title", "start_date"])) {
+			$order = "asc";
+			if(array_key_exists("order", Request::$params) && in_array(Request::$params["order"], ["asc", "desc"])) {
+				$order = Request::$params["order"];
+			}
+			$params["order"] = Request::$params["sort"]." ". $order;
 		}
 
 		$results = $entity::findAll($params);

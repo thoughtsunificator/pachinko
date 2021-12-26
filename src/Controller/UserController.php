@@ -4,6 +4,7 @@ namespace Controller;
 
 use \Core\Controller;
 use \Core\Request;
+use \Core\Config;
 use \Core\Router;
 use \Model\User;
 
@@ -70,7 +71,7 @@ class UserController extends Controller {
 	 * GET /logout
 	 */
 	public function logout() {
-		if (array_key_exists("id_user", $_SESSION) === true) {
+		if (array_key_exists("id_user", $_SESSION)) {
 			unset($_SESSION["id_user"]);
 			header("Location: /");
 		} else {
@@ -82,7 +83,7 @@ class UserController extends Controller {
 	 * GET /login
 	 */
 	public function login() {
-		if (array_key_exists("id_user", $_SESSION) === true) {
+		if (array_key_exists("id_user", $_SESSION)) {
 			print("Vous êtes déja connecté.");
 		} else {
 			$this->render("login", ["title" => "Se connecter"]);
@@ -93,20 +94,24 @@ class UserController extends Controller {
 	 * POST /login
 	 */
 	public function loginPost() {
-		if (array_key_exists("id_user", $_SESSION) === true) {
+		if (array_key_exists("id_user", $_SESSION)) {
 			print("Vous êtes déja connecté.");
 		} else {
-			$username = Request::$body["username"];
-			$password = Request::$body["password"];
-			$user = User::findOne(["where" => ["username" => $username, "password" => $password], "column" => "id_user"]);
-			$success = false;
-			if ($user !== false) {
-				$_SESSION["id_user"] = $user->getField("id_user");
-				header("Location: /");
+			if(!array_key_exists("username", Request::$body) || !array_key_exists("password", Request::$body)) {
+				print("Error: Missing POST parameters.");
 			} else {
-				$message = "Mot de passe erroné.";
+				$username = Request::$body["username"];
+				$password = Request::$body["password"];
+				$user = User::findOne(["where" => ["username" => $username, "password" => $password], "column" => "id_user"]);
+				$success = false;
+				if ($user !== false) {
+					$_SESSION["id_user"] = $user->getField("id_user");
+					header("Location: /");
+				} else {
+					$message = "Mot de passe erroné.";
+				}
+				$this->render("login", ["message" => $message, "title" => "Se connecter", "success" => $success]);
 			}
-			$this->render("login", ["message" => $message, "title" => "Se connecter", "success" => $success]);
 		}
 	}
 
@@ -114,7 +119,7 @@ class UserController extends Controller {
 	 * GET /register
 	 */
 	public function register() {
-		if (array_key_exists("id_user", $_SESSION) === true) {
+		if (array_key_exists("id_user", $_SESSION)) {
 			print("Il faut être déconnecté pour pouvoir s'inscrire.");
 		} else {
 			$this->render("register", ["title" => "S'inscrire"]);
@@ -125,27 +130,35 @@ class UserController extends Controller {
 	 * POST /register
 	 */
 	public function registerPost() {
-		if (array_key_exists("id_user", $_SESSION) === true) {
+		if (array_key_exists("id_user", $_SESSION)) {
 			print("Il faut être déconnecté pour pouvoir s'inscrire.");
 		} else {
-			$username = Request::$body["username"];
-			$password = Request::$body["password"];
-			$user = User::findOne(["where" => ["username" => $username]]);
-			$success = false;
-			if ($user !== false) {
-				$message = "Cette email est déja prise.";
-			} else if (strlen($username) < 3) {
-				$message = "Le nom d'utilisateur doit au minimum comprendre 3 caractères";
-			} else if (strlen($password) < 3) {
-				$message = "Le mot de passe doit au minimum comprendre 3 caractères";
+			if(!array_key_exists("username", Request::$body) || !array_key_exists("password", Request::$body)) {
+				print("Error: Missing POST parameters.");
 			} else {
-				$user = new User(["username" => $username, "password" => $password]);
-				$user->save();
-				$message = "Bienvenu parmis nous $username!";
-				$success = true;
+				$username = Request::$body["username"];
+				$password = Request::$body["password"];
+				$success = false;
+				if(!Config::$REGISTRATION_ENABLED) {
+					$message = "Les inscriptions sont désactivées. Veuillez contacter un administrateur.";
+				} else {
+					$user = User::findOne(["where" => ["username" => $username]]);
+					if ($user !== false) {
+						$message = "Cette email est déja prise.";
+					} else if (strlen($username) < 3) {
+						$message = "Le nom d'utilisateur doit au minimum comprendre 3 caractères";
+					} else if (strlen($password) < 3) {
+						$message = "Le mot de passe doit au minimum comprendre 3 caractères";
+					} else {
+						$user = new User(["username" => $username, "password" => $password]);
+						$user->save();
+						$message = "Bienvenu parmis nous $username!";
+						$success = true;
+					}
+				}
+				$this->render("register", ["message" => $message, "title" => "S'inscrire", "success" => $success]);
 			}
-			$this->render("register", ["message" => $message, "title" => "S'inscrire", "success" => $success]);
 		}
 	}
-	
+
 }

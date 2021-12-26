@@ -12,9 +12,6 @@ final class Core {
 
 	private function __construct() {}
 
-	/**
-	 * Run our app
-	 */
 	public static function run() {
 
 		if(file_exists("../.env.json")) {
@@ -31,7 +28,6 @@ final class Core {
 			}
 		}
 
-		// Path
 		define("URI", $_SERVER["REQUEST_URI"]);
 
 		if(Config::$MAINTENANCE === true) {
@@ -41,7 +37,6 @@ final class Core {
 
 		session_start();
 
-		// Scope
 		if (array_key_exists("id_user", $_SESSION) === true) {
 			Controller::$scope["user"] = User::findOne(["where" => ["id_user" => $_SESSION["id_user"]]]);
 		}
@@ -50,13 +45,13 @@ final class Core {
 		Controller::$scope["animeCount"] = Anime::count();
 		Controller::$scope["latestAnime"] = Anime::findAll(["order" => "id_anime DESC", "limit" => 3]);
 
-		// Routes
 		require(__DIR__ . "/../routes.php");
 
 		$route = Router::getRoute($_SERVER["REQUEST_METHOD"], URI);
 
 		if ($route !== null) {
 			$className = "\\Controller\\".$route["data"]["controller"];
+			Debug::$controllerName = $className;
 			$controller = new $className;
 			call_user_func_array(array($controller, $route["data"]['action']), $route["params"]);
 			print($controller::$render);
@@ -64,6 +59,7 @@ final class Core {
 			http_response_code(404);
 			print( "Cannot ".$_SERVER["REQUEST_METHOD"]." ". URI);
 		}
+
 	}
 
 }

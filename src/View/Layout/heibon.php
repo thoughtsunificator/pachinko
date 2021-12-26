@@ -77,5 +77,10 @@
 		© Pachinko
 	</p>
 </footer>
+<?php
+if($config::$ENV === "dev") {
+	require("/app/src/View/Partial/debug.php");
+}
+?>
 </body>
 </html>

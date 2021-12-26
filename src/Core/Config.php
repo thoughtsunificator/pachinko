@@ -9,6 +9,8 @@ final class Config {
 	public static $LAYOUT = "heibon";
 	public static $TITLE = "Pachinko";
 	public static $MAINTENANCE = false;
+	public static $REGISTRATION_ENABLED = true;
+	public static $DEBUG_BAR = true;
 
 	// Database
 	public static $DATABASE_HOST = "localhost";
