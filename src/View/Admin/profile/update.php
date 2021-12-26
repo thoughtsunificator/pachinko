@@ -1,5 +1,5 @@
 <div class="wrap">
-	<h2>Modifier un membre</h2>
+	<h2>Update profile</h2>
 	<section class="margin-top display-grid grid-gap">
 		<form method="POST">
 			<div class="display-grid template-2col grid-gap">

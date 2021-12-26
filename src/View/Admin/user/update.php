@@ -1,5 +1,5 @@
 <div class="wrap">
-	<h2>Modifier un utilisateur</h2>
+	<h2>Update user</h2>
 	<section class="margin-top display-grid grid-gap">
 		<form method="POST" class="display-grid grid-gap">
 			<div>
@@ -27,7 +27,7 @@
 				</label>
 			</div>
 			<div>
-				<button name="update" class="button">Modifier</button>
+				<button name="update" class="button">Update</button>
 			</div>
 		</form>
 	</section>
