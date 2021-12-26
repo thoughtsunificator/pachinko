@@ -55,7 +55,7 @@
 				<h3>Anime</h3>
 				<nav>
 				<?php foreach ($latestAnime as $anime): ?>
-					<div><a href="/anime/<?= $anime->getField("id_anime"); ?>"><?= htmlspecialchars($anime->getField("title")); ?></a></div>
+					<div><a href="/anime/<?=$anime->getField('id_anime');?>/<?= urlencode(htmlspecialchars($anime->getField("title"))) ?>"><?= htmlspecialchars($anime->getField("title")); ?></a></div>
 				<?php endforeach;  ?>
 				</nav>
 			</section>
@@ -66,9 +66,7 @@
 			<section>
 				<h3>Partenaires</h3>
 				<nav>
-					<div><a href="#">Partenaire 1</a></div>
-					<div><a href="#">Partenaire 2</a></div>
-					<div><a href="#">Partenaire 3</a></div>
+					<div><a href="https://thoughtsunificator.me">thoughtsunificator.me</a></div>
 				</nav>
 			</section>
 		</div>

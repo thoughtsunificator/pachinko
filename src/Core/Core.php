@@ -43,7 +43,7 @@ final class Core {
 
 		Controller::$scope["config"] = Config::class;
 		Controller::$scope["animeCount"] = Anime::count();
-		Controller::$scope["latestAnime"] = Anime::findAll(["order" => "id_anime DESC", "limit" => 3]);
+		Controller::$scope["latestAnime"] = Anime::findAll(["column" => "id_anime, title", "order" => "id_anime DESC", "limit" => 3]);
 
 		require(__DIR__ . "/../routes.php");
 
@@ -51,7 +51,7 @@ final class Core {
 
 		if ($route !== null) {
 			$className = "\\Controller\\".$route["data"]["controller"];
-			Debug::$controllerName = $className;
+			Debug::$controller["controller"] = $className;
 			$controller = new $className;
 			call_user_func_array(array($controller, $route["data"]['action']), $route["params"]);
 			print($controller::$render);
