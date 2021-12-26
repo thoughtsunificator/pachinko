@@ -28,14 +28,14 @@ abstract class Controller {
 		if($layout === null) {
 			$layout = Config::$LAYOUT;
 		}
-		Debug::$controllerScope = self::$scope;
+		Debug::$controller["scope"] = self::$scope;
 		$scope = array_merge(self::$scope, $scope);
-		Debug::$viewScope = $scope;
+		Debug::$view["scope"] = $scope;
 		extract($scope);
 		$reflection = new \ReflectionClass($this);
 		$view = __DIR__ . "/../View/" . substr($reflection->getShortName(), 0, - strlen("Controller")) . "/$view.php";
 		if (file_exists($view)) {
-			Debug::$viewPath = $view;
+			Debug::$view["path"] = $view;
 			ob_start();
 			require(__DIR__ . "/../View/Layout/". $layout . ".php");
 			self::$render = ob_get_clean();
