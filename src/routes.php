@@ -32,8 +32,10 @@ Router::get('/user/create_profile', ['controller' => "UserController", 'action' 
 Router::get('/admin', ['controller' => "AdminController", 'action' => 'index']);
 
 Router::get('/anime/{id}', ['controller' => "AnimeController", 'action' => 'index']);
+Router::get('/anime/{id}/{name}', ['controller' => "AnimeController", 'action' => 'index']);
 
 Router::get('/type/{name}', ['controller' => "AnimeController", 'action' => 'type']);
 Router::get('/meta/{id}', ['controller' => "AnimeController", 'action' => 'meta']);
 
 Router::get('/member/{id}', ['controller' => "MembreController", 'action' => 'index']);
+Router::get('/member/{id}/{name}', ['controller' => "MembreController", 'action' => 'index']);

@@ -1,5 +1,5 @@
 <div class="wrap">
-	<h2>Modifier l'abonnement de <?= $membre["fiche_personne_nom"]. " ". $membre["prenom"]; ?></h2>
+	<h2>Modifier l'abonnement de <?= htmlspecialchars($membre["fiche_personne_nom"]). " ". htmlspecialchars($membre["prenom"]); ?></h2>
 	<form class="margin-top" action="?id=<?= $membre['id_membre']; ?>&action=update_subscription" method="POST">
 	<fieldset>
 		<legend>Mettre a jour l'abonnement</legend>

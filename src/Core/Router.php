@@ -38,7 +38,9 @@ final class Router {
 	public static function getRoute($method, $url) {
 		$parse = parse_url($url);
 		$URItokens = URITokenizer::tokenize($parse["path"]);
-
+		if(count($URItokens) > 1 && $URItokens[count($URItokens) - 1]["buffer"] === "/") {
+			array_pop($URItokens);
+		}
 		$routes = array_filter(self::$_routes, function($route) use($method) {
 			return $route["method"] === $method || $route["method"] === "*";
 		});
@@ -48,6 +50,9 @@ final class Router {
 			}
 			$validTokens = [];
 			$routeTokens = URITokenizer::tokenize($route["url"]);
+			if(count($routeTokens) > 1 && $routeTokens[count($routeTokens) - 1]["buffer"] === "/") {
+				array_pop($routeTokens);
+			}
 			if (count($routeTokens) !== count($URItokens)) {
 				continue;
 			}

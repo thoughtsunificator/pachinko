@@ -14,22 +14,22 @@
 				</select>
 			</label>
 			<label for="title">Titre : 
-				<input class="padding-xs full-width" type="text" name="title" id="title" value="<?= $anime["title"] ?>" required>
+				<input class="padding-xs full-width" type="text" name="title" id="title" value="<?= htmlspecialchars($anime["title"]) ?>" required>
 			</label>
-			<label for="synopsis">Synopsis : 
-				<input class="padding-xs full-width" type="text" name="synopsis" id="synopsis" value="<?= $anime["synopsis"] ?>">
+			<label for="synopsis">Synopsis :
+				<input class="padding-xs full-width" type="text" name="synopsis" id="synopsis" value="<?= htmlspecialchars($anime["synopsis"]) ?>">
 			</label>
-			<label for="start_date">Date de debut : 
-				<input class="padding-xs full-width" type="date" name="start_date" id="start_date" value="<?= $anime["start_date"] ?>">
+			<label for="start_date">Date de debut :
+				<input class="padding-xs full-width" type="date" name="start_date" id="start_date" value="<?= htmlspecialchars($anime["start_date"]) ?>">
 			</label>
-			<label for="end_date">Date de fin : 
-				<input class="padding-xs full-width" type="date" name="end_date" id="end_date" value="<?= $anime["end_date"] ?>">
-			</label>		
-			<label for="duration">Durée : 
-				<input class="padding-xs full-width" type="text" name="duration" id="duration" value="<?= $anime["duration"] ?>">
+			<label for="end_date">Date de fin :
+				<input class="padding-xs full-width" type="date" name="end_date" id="end_date" value="<?= htmlspecialchars($anime["end_date"]) ?>">
 			</label>
-			<label for="cover">Cover : 
-				<input class="padding-xs full-width" type="text" name="cover" id="cover" placeholder="URL de la cover" value="<?= $anime["cover"] ?>">
+			<label for="duration">Durée :
+				<input class="padding-xs full-width" type="text" name="duration" id="duration" value="<?= htmlspecialchars($anime["duration"]) ?>">
+			</label>
+			<label for="cover">Cover :
+				<input class="padding-xs full-width" type="text" name="cover" id="cover" placeholder="URL de la cover" value="<?= htmlspecialchars($anime["cover"]) ?>">
 			</label>
 			<label for="status">Status : 
 				<select class="padding-xs full-width" name="status" id="status" required>
@@ -40,18 +40,18 @@
 				</select>
 			</label>
 			<label for="episodes">Episodes : 
-				<input class="padding-xs full-width" type="number" name="episodes" id="episodes" placeholder="Nombre d'episodes" value="<?= $anime["episodes"] ?>">
+				<input class="padding-xs full-width" type="number" name="episodes" id="episodes" placeholder="Nombre d'episodes" value="<?= htmlspecialchars($anime["episodes"]) ?>">
 			</label>	
 			<label for="trailer">Trailer : 
-				<input class="padding-xs full-width" type="url" name="trailer" id="trailer" placeholder="https://www.youtube.com/embed..." value="<?= $anime["trailer"] ?>">
+				<input class="padding-xs full-width" type="url" name="trailer" id="trailer" placeholder="https://www.youtube.com/embed..." value="<?= htmlspecialchars($anime["trailer"]) ?>">
 			</label>		
 			<label for="source">Source : 
-				<input class="padding-xs full-width" type="text" name="source" id="source" placeholer="ex : Game" value="<?= $anime["source"] ?>">
+				<input class="padding-xs full-width" type="text" name="source" id="source" placeholer="ex : Game" value="<?= htmlspecialchars($anime["source"]) ?>">
 			</label>
 			<label for="premiered">Premiered : 
-				<input class="padding-xs full-width" type="text" name="premiered" id="premiered" placeholer="ex : Fall 2006" value="<?= $anime["premiered"] ?>">
+				<input class="padding-xs full-width" type="text" name="premiered" id="premiered" placeholer="ex : Fall 2006" value="<?= htmlspecialchars($anime["premiered"]) ?>">
 			</label>	
-			<label for="genres">Genres : 
+<!-- 			<label for="genres">Genres :
 				<input class="padding-xs full-width" type="text" name="genres" id="genres" placeholder="Separes par une virgule; ex : Action, Mecha, Sci-Fi, Seinen" value="<?= implode(", ", $metas["genre"]) ?>">
 			</label>
 			<label for="producers">Producers : 
@@ -62,7 +62,7 @@
 			</label>
 			<label for="synonyms">Synonyms : 
 				<input class="padding-xs full-width" type="text" name="synonyms" id="synonyms" placeholder="Separes par une virgule" value="<?= implode(", ", $metas["synonym"]) ?>">
-			</label>	
+			</label>	 -->
 		</div>
 	<div class="margin-top">
 			<button class="padding-xs" name="update">Modifier</button>

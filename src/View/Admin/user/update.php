@@ -7,7 +7,7 @@
 					<div>
 						Identifiant
 					</div>
-					<input type="text" name="username" id="username" minlength="3" required class="padding-xs full-width" value="<?= $user2["username"] ?>">
+					<input type="text" name="username" id="username" minlength="3" required class="padding-xs full-width" value="<?= htmlspecialchars($user2["username"]) ?>">
 				</label>
 			</div>
 			<div>
@@ -23,7 +23,7 @@
 						<div>
 							Access level
 						</div>
-					<input type="text" name="access_level" id="access_level" required class="padding-xs full-width" value="<?= $user2["access_level"] ?>">
+					<input type="text" name="access_level" id="access_level" required class="padding-xs full-width" value="<?= htmlspecialchars($user2["access_level"]) ?>">
 				</label>
 			</div>
 			<div>

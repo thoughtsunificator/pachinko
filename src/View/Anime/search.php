@@ -17,19 +17,19 @@
 					<select class="margin-top padding-xs full-width" name="type" id="type">
 						<option value="">Sélectionner un type</option>
 						<?php foreach ($types as $type): ?>
-						<option value="<?= $type->getField("type"); ?>"><?= $type->getField("type") ?></option>
+						<option value="<?= htmlspecialchars($type->getField("type")); ?>"><?= htmlspecialchars($type->getField("type")) ?></option>
 						<?php endforeach; ?>
 					</select>
 			</label>
 		</div>
 		<div>
-				Genre : 
+				Genre :
 					<div class="margin-top display-grid template-5col padding background-color-mineshaft">
 						<?php foreach ($genres as $genre): ?>
 						<div>
 							<label for="genre-<?= $genre->getField("value") ?>">
-									<input type="checkbox" id="genre-<?= $genre->getField("value") ?>" name="genre[]" value="<?= $genre->getField("value") ?>">
-									<?= $genre->getField("value") ?>
+									<input type="checkbox" id="genre-<?= $genre->getField("value") ?>" name="genre[]" value="<?= htmlspecialchars($genre->getField("value")) ?>">
+									<?= htmlspecialchars($genre->getField("value")) ?>
 							</label>
 						</div>
 						<?php endforeach; ?>
@@ -37,11 +37,11 @@
 		</div>
 		<div>
 			<label for="producer">
-					Producteur : 
+					Producteur :
 					<select class="margin-top padding-xs full-width" name="producer" id="producer">
 						<option value="">Sélectionner un producteur</option>
 						<?php foreach ($producers as $producer): ?>
-						<option value="<?= $producer->getField("value") ?>"><?= $producer->getField("value") ?></option>
+						<option value="<?= htmlspecialchars($producer->getField("value")) ?>"><?= htmlspecialchars($producer->getField("value")) ?></option>
 						<?php endforeach; ?>
 					</select>
 			</label>
@@ -52,7 +52,7 @@
 					<select class="margin-top padding-xs full-width" name="studio" id="studio">
 						<option value="">Sélectionner un studio</option>
 						<?php foreach ($studios as $studio): ?>
-						<option value="<?= $studio->getField("value") ?>"><?= $studio->getField("value") ?></option>
+						<option value="<?= htmlspecialchars($studio->getField("value")) ?>"><?= htmlspecialchars($studio->getField("value")) ?></option>
 						<?php endforeach; ?>
 					</select>
 			</label>
