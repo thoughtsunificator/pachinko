@@ -21,8 +21,6 @@ class AnimeController extends Controller {
 			"where" => ["id_anime" => $id]
 		]);
 		if ($anime) {
-			echo "ID not found";
-		} else {
 			$metas = AnimeMeta::findAll(["where" => ["id_anime" => $id]]);
 			$reviews = HistoriqueMembre::findAll(["where" => ["id_anime" => $id]]);
 			$genres = array_filter($metas, function($meta) {
@@ -38,7 +36,7 @@ class AnimeController extends Controller {
 				return $meta->getField("name") === "synonym";
 			});
 			$this->render("index", [
-				"title" => $anime->getField("title"), 
+				"title" => $anime->getField("title"),
 				"anime" => $anime,
 				"genres" => $genres,
 				"producers" => $producers,
@@ -47,8 +45,9 @@ class AnimeController extends Controller {
 				"episodes" => [],
 				"reviews" => []
 			]);
+		} else {
+			echo "ID not found";
 		}
-		
 	}
 
 	/**
