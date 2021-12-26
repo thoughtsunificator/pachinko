@@ -32,7 +32,7 @@ UserInterface.bind("collection.tab", async function(element, application, contro
 
 	element.addEventListener("click", function() {
 		let tabName = null
-		if(active === false || control.toggle !== true) {
+		if(active || control.toggle !== true) {
 			tabName = control.name
 		}
 		UserInterface.announce(application, control.action, tabName)

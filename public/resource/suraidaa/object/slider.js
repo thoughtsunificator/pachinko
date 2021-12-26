@@ -49,11 +49,11 @@ Suraidaa.Slider = function() {
 	}
 
 	this.play = async function() {
-		if (UserInterface.DEBUG === true)
+		if (UserInterface.DEBUG)
 			console.log("[Slider]: play")
 		this.state = Suraidaa.Slider.STATE_PLAYING
 		while(this.state === Suraidaa.Slider.STATE_PLAYING) {
-			if (UserInterface.DEBUG === true)
+			if (UserInterface.DEBUG)
 				console.log("[Slider]: (Timeout) Waiting " + Suraidaa.Slider.TIMEOUT_MILLISECOND+"ms to go the next image")
 			await new Promise(async (resolve) => {
 				this.timeout = setTimeout(async () => {
@@ -61,13 +61,13 @@ Suraidaa.Slider = function() {
 					resolve()
 				}, Suraidaa.Slider.TIMEOUT_MILLISECOND)
 			})
-			if (UserInterface.DEBUG === true)
+			if (UserInterface.DEBUG)
 				console.log("[Slider]: (Timeout) Image changed")
 		}
 	}
 
 	this.pause = function() {
-		if (UserInterface.DEBUG === true)
+		if (UserInterface.DEBUG)
 			console.log("[Slider]: pause")
 		this.state = Suraidaa.Slider.STATE_PAUSED
 		if (this.timeout !== null)
@@ -75,7 +75,7 @@ Suraidaa.Slider = function() {
 	}
 
 	this.interrupt = function() {
-		if (UserInterface.DEBUG === true)
+		if (UserInterface.DEBUG)
 			console.log("[Slider]: interrupt")
 		this.pause()
 		this.play()

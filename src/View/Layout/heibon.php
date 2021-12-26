@@ -15,7 +15,7 @@
 <header id="header">
 	<nav id="first-menu" class="wrap">
 		<a href="/anime"><?= $animeCount; ?> Animes</span>
-		<?php if (isset($user) === true): ?>
+		<?php if (isset($user)): ?>
 		<?php if ($user->getField("access_level") >=$config::$ACCESS_LEVEL_ADMINISTRATOR): ?>
 		<a href="/admin">Administration</a>
 		<?php endif; ?>

@@ -60,7 +60,7 @@ Node²: https://developer.mozilla.org/en-US/docs/Web/API/node
 	 * @param {string[]} 						[model.cssSelectors]        The CSS selector(s) of the target(s)
 	 */
 	this.model = function(model) {
-		if (this.DEBUG === true)
+		if (this.DEBUG)
 			console.log("[model]", model.method, model.name)
 		_models.push(model)
 	}
@@ -71,7 +71,7 @@ Node²: https://developer.mozilla.org/en-US/docs/Web/API/node
 	 * @param {function} callback The function binding the model
 	*/
 	this.bind = function(name, callback) {
-		if (this.DEBUG === true)
+		if (this.DEBUG)
 			console.log("[bind]", name)
 		_models.find(model => model.name === name).binding = {name, callback}
 	}
@@ -82,7 +82,7 @@ Node²: https://developer.mozilla.org/en-US/docs/Web/API/node
 	 * @param {string[]} models The names of the models
 	 */
 	this.group = function(name, models) {
-		if (this.DEBUG === true)
+		if (this.DEBUG)
 			console.log("[group]", name, models)
 		_groups.push({name, models})
 	}
@@ -93,7 +93,7 @@ Node²: https://developer.mozilla.org/en-US/docs/Web/API/node
 	 * @param {string[]} models	The names of the groups
 	 */
 	this.set = function(name, groups) {
-		if (this.DEBUG === true)
+		if (this.DEBUG)
 			console.log("[set]", name, groups)
 		_sets.push({name, groups})
 	}
@@ -107,31 +107,31 @@ Node²: https://developer.mozilla.org/en-US/docs/Web/API/node
 	 * @param {Object} [parameters.bindingArgs]		The arguments that go along with the binding
 	 */
 	this.runModel = async function(name, parameters = {}) {
-		if (this.DEBUG === true)
+		if (this.DEBUG)
 			console.log("[runModel]", name)
 		let model = _models.find(model => model.name === name)		
 		let {method, properties} = model
-		if (model.hasOwnProperty("callback") === true)
+		if (model.hasOwnProperty("callback"))
 			properties = model.callback(parameters.data)
 		let targets = []
-		if (model.hasOwnProperty("cssSelectors") === true && model.cssSelectors.length >= 1) {
+		if (model.hasOwnProperty("cssSelectors") && model.cssSelectors.length >= 1) {
 			let parentNode = document
-			if (parameters.hasOwnProperty("parentNode") === true)
+			if (parameters.hasOwnProperty("parentNode"))
 				parentNode = parameters.parentNode
 			targets = [].concat.apply([], model.cssSelectors.map(function(selector) {
-				if (selector.startsWith("*") === true)
+				if (selector.startsWith("*"))
 					return [].slice.call(parentNode.querySelectorAll(selector.substring(1)))
 				else
 					return parentNode.querySelector(selector)
 			})).filter(target => target !== null)
 		}
-		if (targets.length === 0 && parameters.hasOwnProperty("parentNode") === true)
+		if (targets.length === 0 && parameters.hasOwnProperty("parentNode"))
 			targets.push(parameters.parentNode)		
 		if (method === WRAP_ELEMENT)
 			properties.count = targets.length
 		for ([index, target] of targets.entries()) {
 			let nodes = []
-			if (METHODS_CREATE.includes(method) === true)
+			if (METHODS_CREATE.includes(method))
 				nodes = await UserInterface.createNodes(properties)
 			if (method === APPEND_CHILD)
 				nodes.forEach(element => target.appendChild(element))
@@ -148,7 +148,7 @@ Node²: https://developer.mozilla.org/en-US/docs/Web/API/node
 				target.parentNode.replaceChild(nodes[index], target)
 			} else if (method === REMOVE_LISTENERS)
 				target.parentNode.replaceChild(target.cloneNode(true), target)
-			if (nodes.length >= 1 && model.hasOwnProperty("binding") === true)
+			if (nodes.length >= 1 && model.hasOwnProperty("binding"))
 				await	model.binding.callback.apply(null, [nodes[0]].concat(parameters.bindingArgs))
 		}
 	}
@@ -159,7 +159,7 @@ Node²: https://developer.mozilla.org/en-US/docs/Web/API/node
 	 * @param  {Object[]} [parameters]	The parameters for each model
 	 */
 	this.runGroup = async function(name, parameters = []) {
-		if (this.DEBUG === true)
+		if (this.DEBUG)
 			console.log("[runGroup]", name)
 		let {models} = _groups.find(group => group.name === name)
 		for (let [index, name] of models.entries())
@@ -175,7 +175,7 @@ Node²: https://developer.mozilla.org/en-US/docs/Web/API/node
 	 * @param  {Object[]} [parameters] The parameters for each model by group
 	 */
 	this.runSet = async function(name, parameters = []) {
-		if (this.DEBUG === true)
+		if (this.DEBUG)
 			console.log("[runSet]", name)
 		let {groups} = _sets.find(set => set.name === name)
 		for (let [index, name] of groups.entries())
@@ -200,7 +200,7 @@ Node²: https://developer.mozilla.org/en-US/docs/Web/API/node
 			else
 				currentTagName = tagName
 			let element = document.createElement(currentTagName)
-			Object.keys(properties).filter(property => PROPERTIES_PROCESSED.includes(property) === false).forEach(function(property) {
+			Object.keys(properties).filter(property => PROPERTIES_PROCESSED.includes(property)).forEach(function(property) {
 				if (properties[property] instanceof Array)
 					element[property] = properties[property][i]
 				else
@@ -239,7 +239,7 @@ Node²: https://developer.mozilla.org/en-US/docs/Web/API/node
 	 * @param  {function} callback 
 	 */
 	this.listen = function(context, title, callback) {
-		if (this.DEBUG === true)
+		if (this.DEBUG)
 			console.log("(listen)", title)
 		_listeners.push({context, title, callback})
 	}
@@ -251,7 +251,7 @@ Node²: https://developer.mozilla.org/en-US/docs/Web/API/node
 	 * @param  {*} 			content The content of the announce
 	 */
 	this.announce = async function(context, title, content) {
-		if (this.DEBUG === true)
+		if (this.DEBUG)
 			console.log("(announce)", title)
 		let listeners = _listeners.filter(listener => listener.context === context && listener.title === title)
 		for (let listener of listeners)

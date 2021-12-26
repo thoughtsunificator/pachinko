@@ -26,7 +26,7 @@ UserInterface.bind("collection.label_checkbox", async function(element, applicat
 	const checkboxNode = element.querySelector("input")
 
 	UserInterface.listen(application, control.action, async (value) => {
-		if(value === true) {
+		if(value) {
 			checkboxNode.checked = true
 		}
 	})

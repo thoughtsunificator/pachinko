@@ -40,13 +40,13 @@ UserInterface.bind("collection.resizable", async function(element, application, 
 	})
 
 	document.addEventListener("mouseup", (event) => {
-		if(resizable.resizing === true) {
+		if(resizable.resizing) {
 			UserInterface.announce(application, "resizable end", { x: event.clientX, y: event.clientY})
 		}
 	})
 
 	document.addEventListener("mousemove", function(event) {
-		if(resizable.resizing === true) {
+		if(resizable.resizing) {
 			const rect = element.getBoundingClientRect()
 			const diffX = event.clientX - resizable.x
 			const diffY = event.clientY - resizable.y
@@ -61,7 +61,7 @@ UserInterface.bind("collection.resizable", async function(element, application, 
 				height = rect.height + (diffY)
 			}
 			resizable.size = { width, height}
-			if(resizable.resizing === true) {
+			if(resizable.resizing) {
 				UserInterface.announce(application, "resizable update", { width, height })
 			}
 		}

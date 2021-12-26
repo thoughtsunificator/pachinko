@@ -41,7 +41,7 @@ UserInterface.bind("suraidaa.slider", async function(element, images) {
 	UserInterface.listen(slider, "previous", async function(repeat) {
 		let activeImage = slider.getActiveImage()
 		let previousImage = slider.getPreviousImage()
-		if (repeat === true && previousImage === null)
+		if (repeat && previousImage === null)
 			previousImage = slider.getImages()[slider.getImages().length - 1]
 		if (previousImage !== null) {
 			await UserInterface.announce(slider, "set_image_state", { image: previousImage, state: Suraidaa.Image.STATE_ACTIVE })
@@ -52,7 +52,7 @@ UserInterface.bind("suraidaa.slider", async function(element, images) {
 	UserInterface.listen(slider, "next", async function(repeat) {
 		let activeImage = slider.getActiveImage()
 		let nextImage = slider.getNextImage()
-		if (repeat === true && nextImage === null)
+		if (repeat && nextImage === null)
 			nextImage = slider.getImages()[0]
 		if (nextImage !== null) {
 			await UserInterface.announce(slider, "set_image_state", { image: nextImage, state: Suraidaa.Image.STATE_ACTIVE })

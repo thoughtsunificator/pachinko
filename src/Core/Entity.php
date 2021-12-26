@@ -28,7 +28,7 @@ abstract class Entity {
 	}
 
 	public function save() {
-		if (array_key_exists(static::PRIMARY_KEY, $this->_fields) === true) {
+		if (array_key_exists(static::PRIMARY_KEY, $this->_fields)) {
 			ORM::update($this);
 		} else {
 			$id = ORM::create($this);

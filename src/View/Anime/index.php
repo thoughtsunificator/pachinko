@@ -1,5 +1,5 @@
 <div class="wrap">
-	<?php if (isset($message) === true): ?>
+	<?php if (isset($message)): ?>
 	<p class="background-color-tomthumb padding-xs margin-bottom">
 		<?= $message;?>
 	</p>
@@ -115,7 +115,7 @@
 						</div>
 					</div>
 				<div class="padding-xs background-color-hurricane"><?= $review['avis'] ?></div>
-				<?php if (isset($user) === true && $user["access_level"] >= ACCESS_LEVEL_ADMINISTRATOR): ?>
+				<?php if (isset($user) && $user["access_level"] >= ACCESS_LEVEL_ADMINISTRATOR): ?>
 				<?php endif?>
 		</div>
 	</div>	

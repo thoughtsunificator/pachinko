@@ -22,7 +22,7 @@ final class Core {
 		$vars = get_class_vars(Config::class);
 		foreach ($vars as $key => $value) {
 			if(isset($_ENV[$key])) {
-				Config::$$key = $_ENV[$key];
+				Config::$$key = $_ENV[$key] === "true" ? true : ($_ENV[$key] === "false" ? false : $_ENV[$key]);
 			} else if(isset($env[$key])) {
 				Config::$$key = $env[$key];
 			}
@@ -30,14 +30,14 @@ final class Core {
 
 		define("URI", $_SERVER["REQUEST_URI"]);
 
-		if(Config::$MAINTENANCE === true) {
+		if(Config::$MAINTENANCE) {
 			include(__DIR__ . "/../View/Partial/maintenance.php");
 			return;
 		}
 
 		session_start();
 
-		if (array_key_exists("id_user", $_SESSION) === true) {
+		if (array_key_exists("id_user", $_SESSION)) {
 			Controller::$scope["user"] = User::findOne(["where" => ["id_user" => $_SESSION["id_user"]]]);
 		}
 

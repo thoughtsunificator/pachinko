@@ -1,7 +1,7 @@
 <div class="wrap">
 	<h2>Inscription</h2>
-	<?php	if (isset($message) === true): ?>
-	<div class="message margin-top-xl<?= isset($success) && $success === true ? " success" : " error" ?> padding-xs margin-bottom">
+	<?php	if (isset($message)): ?>
+	<div class="message margin-top-xl<?= isset($success) && $success ? " success" : " error" ?> padding-xs margin-bottom">
 		<?= $message; ?>
 	</div>
 	<?php endif; ?>
