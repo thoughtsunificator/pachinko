@@ -139,7 +139,7 @@ class UserController extends Controller {
 				$username = Request::$body["username"];
 				$password = Request::$body["password"];
 				$success = false;
-				if(Config::$REGISTRATION_ENABLED) {
+				if(!Config::$REGISTRATION_ENABLED) {
 					$message = "Les inscriptions sont désactivées. Veuillez contacter un administrateur.";
 				} else {
 					$user = User::findOne(["where" => ["username" => $username]]);
