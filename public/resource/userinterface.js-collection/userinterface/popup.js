@@ -20,7 +20,7 @@ UserInterface.bind("collection.popup", async function(element, application) {
 	const popupBodyElement = element.querySelector(".popup-body")
 
 	UserInterface.listen(application, "popup open", async data => {
-		if(_opened) {
+		if(_opened === true) {
 			UserInterface.announce(application, "popup close")
 		}
 		_opened = true
@@ -29,7 +29,7 @@ UserInterface.bind("collection.popup", async function(element, application) {
 	})
 
 	UserInterface.listen(application, "popup close", async () => {
-		if(_opened) {
+		if(_opened === false) {
 			return
 		}
 		_opened = false
@@ -71,7 +71,7 @@ UserInterface.bind("collection.popup", async function(element, application) {
 	})
 
 	element.addEventListener("click", event => {
-		if(event.target.contains(element)) {
+		if(event.target.contains(element) === true) {
 			UserInterface.announce(application, "popup close")
 		}
 	})
