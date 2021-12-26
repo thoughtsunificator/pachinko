@@ -8,7 +8,7 @@
 					<div>
 						Nom
 					</div>
-					<input type="text" name="firstname" id="firstname" minlength="3" required class="padding-xs full-width" value="<?= $membre["fiche_personne_nom"] ?>">
+					<input type="text" name="firstname" id="firstname" minlength="3" required class="padding-xs full-width" value="<?= htmlspecialchars($membre["fiche_personne_nom"]) ?>">
 				</label>
 			</div>
 			<div>
@@ -16,7 +16,7 @@
 					<div>
 						Prenom
 					</div>
-					<input type="text" name="lastname" id="lastname" minlength="3" required class="padding-xs full-width" value="<?= $membre["prenom"] ?>">
+					<input type="text" name="lastname" id="lastname" minlength="3" required class="padding-xs full-width" value="<?= htmlspecialchars($membre["prenom"]) ?>">
 				</label>
 			</div>
 			<div>
@@ -24,7 +24,7 @@
 						<div>
 							Date de naissance
 						</div>
-					<input type="date" name="birthdate" id="birthdate" required class="padding-xs full-width" value="<?= date("Y-m-d", strtotime($membre["date_naissance"])) ?>">
+					<input type="date" name="birthdate" id="birthdate" required class="padding-xs full-width" value="<?= date("Y-m-d", strtotime(htmlspecialchars($membre["date_naissance"]))) ?>">
 				</label>
 			</div>
 			<div>
@@ -32,7 +32,7 @@
 						<div>
 							Email
 						</div>
-					<input type="email" name="email" id="email" required class="padding-xs full-width" value="<?= $membre["email"] ?>">
+					<input type="email" name="email" id="email" required class="padding-xs full-width" value="<?= htmlspecialchars($membre["email"]) ?>">
 				</label>
 			</div>
 			<div>
@@ -40,7 +40,7 @@
 						<div>
 							Adresse
 						</div>
-					<input type="text" name="address" id="address" required class="padding-xs full-width" value="<?= $membre["adresse"] ?>">
+					<input type="text" name="address" id="address" required class="padding-xs full-width" value="<?= htmlspecialchars($membre["adresse"]) ?>">
 				</label>
 			</div>
 			<div>
@@ -48,7 +48,7 @@
 						<div>
 							Code postal
 						</div>
-					<input type="text" name="zipcode" id="zipcode" required class="padding-xs full-width" value="<?= $membre["cpostal"] ?>">
+					<input type="text" name="zipcode" id="zipcode" required class="padding-xs full-width" value="<?= htmlspecialchars($membre["cpostal"]) ?>">
 				</label>
 			</div>
 			<div>
@@ -56,7 +56,7 @@
 						<div>
 							Ville
 						</div>
-					<input type="text" name="city" id="city" required class="padding-xs full-width" value="<?= $membre["ville"] ?>">
+					<input type="text" name="city" id="city" required class="padding-xs full-width" value="<?= htmlspecialchars($membre["ville"]) ?>">
 				</label>
 			</div>
 			<div>
@@ -64,7 +64,7 @@
 						<div>
 							Pays
 						</div>
-					<input type="text" name="country" id="country" required class="padding-xs full-width" value="<?= $membre["pays"] ?>">
+					<input type="text" name="country" id="country" required class="padding-xs full-width" value="<?= htmlspecialchars($membre["pays"]) ?>">
 				</label>
 			</div>
 			<div>
@@ -75,7 +75,7 @@
 						<select class="padding-xs full-width" name="id_abo" id="id_abo" autocomplete="off" required>
 							<option value="">Selectionnez un abonnement</option>
 							<?php	foreach (getSubscriptionList() as $abonnement):	?>
-							<option<?php ($abonnement["id_abo"] === $membre["id_abo"] ? print(" selected=\"selected\"") : "") ?> value="<?= $abonnement["id_abo"]; ?>"><?= $abonnement["nom"]; ?></option>
+							<option<?php ($abonnement["id_abo"] === $membre["id_abo"] ? print(" selected=\"selected\"") : "") ?> value="<?= $abonnement["id_abo"]; ?>"><?= htmlspecialchars($abonnement["nom"]); ?></option>
 							<?php	endforeach;	?>
 						</select>
 				</label>

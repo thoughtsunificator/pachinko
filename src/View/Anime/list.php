@@ -34,9 +34,10 @@ $filterB["order"] = $order;
 				}
 			}
 			?>
-			<a href="/anime/<?=$anime->getField('id_anime');?>"><img width="150" src="<?= $image ?>" alt="Image du anime"></a>
+			<a href="/anime/<?=$anime->getField('id_anime');?>/<?= urlencode(htmlspecialchars($anime->getField("title"))) ?>">
+				<img width="150" src="<?= htmlspecialchars($image) ?>" alt="Image du anime"></a>
 				<div>
-					<?= $anime->getField('title'); ?>
+					<?= htmlspecialchars($anime->getField('title')); ?>
 				</div>
 			</div>
 		<?php	endforeach;	?>
