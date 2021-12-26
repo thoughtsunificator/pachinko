@@ -7,17 +7,17 @@ use \Core\Request;
 use \Core\ORM;
 use \Core\Core;
 use \Core\Config;
-use \Model\Membre;
+use \Model\Profile;
 use \Model\FichePersonne;
 use \Model\Abonnement;
 
-class MembreController extends Controller {
+class ProfileController extends Controller {
 
 	/**
-	 * GET /member/{id}
+	 * GET /users/{id}
 	 */
 	public function index($id) {
-		$membre = Membre::findOne([
+		$membre = Profile::findOne([
 			"where" => ["id_membre" => $id]
 		]);
 		if (!$membre) {
@@ -38,14 +38,14 @@ class MembreController extends Controller {
 	}
 
 	/**
-	 * GET /member
+	 * GET /users
 	 */
 	public function search() {
-		$this->render("search", ["title" => "Membre"]);
+		$this->render("search", ["title" => "Profile"]);
 	}
 
 	/**
-	 * GET /search/member
+	 * GET /search/users
 	 */
 	public function list() {
 		$fields = [];
@@ -64,10 +64,10 @@ class MembreController extends Controller {
 		}
 		$fiches = FichePersonne::findAll(["where" => $fields, "operator" => $operators, "limit" => ($page - 1) * $results_per_page . ",$results_per_page"]);
 		foreach ($fiches as &$fiche) {
-			$fiche->setField("membre", Membre::findOne(["where" => ["id_fiche_perso" => $fiche->getField("id_perso")]]));
+			$fiche->setField("membre", Profile::findOne(["where" => ["id_fiche_perso" => $fiche->getField("id_perso")]]));
 		}
 		$this->render("list", [
-			"title" => "Recherche de membre", 
+			"title" => "Profiles",
 			"results" => $fiches,
 			"totalPage" => $totalPage,
 			"page" => $page

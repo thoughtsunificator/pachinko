@@ -13,13 +13,13 @@ Router::post("/login", ["controller" => "UserController", "action" => "loginPost
 Router::get("/logout", ["controller" => "UserController", "action" => "logout"]);
 
 Router::get("/anime", ["controller" => "AnimeController", "action" => "search"]);
-Router::get("/member", ["controller" => "MembreController", "action" => "search"]);
+Router::get("/users", ["controller" => "ProfileController", "action" => "search"]);
 
 Router::post('/search', ['controller' => "SearchController", 'action' => 'index']);
 
 Router::get('/search/anime', ['controller' => "AnimeController", 'action' => 'list']);
 
-Router::get('/search/member', ['controller' => "MembreController", 'action' => 'list']);
+Router::get('/search/users', ['controller' => "ProfileController", 'action' => 'list']);
 
 Router::get('/user', ['controller' => "UserController", 'action' => 'index']);
 
@@ -37,5 +37,5 @@ Router::get('/anime/{id}/{name}', ['controller' => "AnimeController", 'action' =
 Router::get('/type/{name}', ['controller' => "AnimeController", 'action' => 'type']);
 Router::get('/meta/{id}', ['controller' => "AnimeController", 'action' => 'meta']);
 
-Router::get('/member/{id}', ['controller' => "MembreController", 'action' => 'index']);
-Router::get('/member/{id}/{name}', ['controller' => "MembreController", 'action' => 'index']);
+Router::get('/users/{id}', ['controller' => "ProfileController", 'action' => 'index']);
+Router::get('/users/{id}/{name}', ['controller' => "ProfileController", 'action' => 'index']);

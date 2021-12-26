@@ -1,5 +1,5 @@
 <div class="wrap">
-	<h2>Resultat de la recherche</h2>
+	<h2>Results</h2>
 	<div class="display-grid template-2column grid-gap margin-top-xl">
 	<?php	while ($anime = $statement->fetch()):	?>
 			<div class="display-grid template-2col1frauto grid-gap">

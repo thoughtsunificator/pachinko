@@ -19,26 +19,25 @@
 		<?php if ($user->getField("access_level") >=$config::$ACCESS_LEVEL_ADMINISTRATOR): ?>
 		<a href="/admin">Administration</a>
 		<?php endif; ?>
-		<a href="/user">Mon compte</a>
-		<a href="/logout">Se déconnecter</a>
+		<a href="/user">Account</a>
+		<a href="/logout">Logout</a>
 		<?php else: ?>
-		<a href="/register">S'inscrire</a>
-		<a href="/login">Se connecter</a>
+		<a href="/register">Register</a>
+		<a href="/login">Login</a>
 		<?php endif; ?>
 	</nav>
 	<section class="wrap">
 		<h1 id="logo"><?=$config::$TITLE ?></h1>
 		<div>
 			<nav id="second-menu">
-				<a href="/">Acceuil</a>
 				<a href="/anime">Anime</a>
-				<a href="/member">Membre</a>
+				<a href="/users">Users</a>
 			</nav>
 			<form method="POST" action="/search">
-				<input type="text" placeholder="Rechercher" name="query">
+				<input type="text" placeholder="Search" name="query">
 				<select name="type">
 					<option value="anime">Anime</option>
-					<option value="member">Membre</option>
+					<option value="user">Users</option>
 				</select>
 				<button>OK</button>
 			</form>
@@ -55,18 +54,14 @@
 				<h3>Anime</h3>
 				<nav>
 				<?php foreach ($latestAnime as $anime): ?>
-					<div><a href="/anime/<?=$anime->getField('id_anime');?>/<?= urlencode(htmlspecialchars($anime->getField("title"))) ?>"><?= htmlspecialchars($anime->getField("title")); ?></a></div>
+					<div>* <a href="/anime/<?=$anime->getField('id_anime');?>/<?= urlencode(htmlspecialchars($anime->getField("title"))) ?>"><?= htmlspecialchars($anime->getField("title")); ?></a></div>
 				<?php endforeach;  ?>
 				</nav>
 			</section>
 			<section>
-				<h3>Episode</h3>
-				<nav>Coming soon</nav>
-			</section>
-			<section>
-				<h3>Partenaires</h3>
+				<h3>Affiliates</h3>
 				<nav>
-					<div><a href="https://thoughtsunificator.me">thoughtsunificator.me</a></div>
+					<div>* <a href="https://thoughtsunificator.me">thoughtsunificator.me</a></div>
 				</nav>
 			</section>
 		</div>

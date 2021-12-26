@@ -6,14 +6,14 @@
 	</div>
 	<?php endif;?>
 	<h3 class="margin-top-xl">
-		Bonjour <?= $user->getField("username"); ?> !
+		Hi <?= $user->getField("username"); ?> !
 	</h3>
 	<div class="margin-top display-grid grid-gap">
 		<?php if ($user->getField("id_membre") !== null): ?>
-			<a class="text-decoration-none padding background-color-zambezi border-width-1 border-style-solid border-color-dustygray2 color-bonjour hover-background-color-dustygray2" href="/user/edit">Modifier mes informations</a>
+			<a class="text-decoration-none padding background-color-zambezi border-width-1 border-style-solid border-color-dustygray2 color-bonjour hover-background-color-dustygray2" href="/user/edit">Update my account</a>
 		<?php else:?>
-			<a class="text-decoration-none padding background-color-zambezi border-width-1 border-style-solid border-color-dustygray2 color-bonjour hover-background-color-dustygray2" href="/user/create_profile">Creer un profil</a>
+			<a class="text-decoration-none padding background-color-zambezi border-width-1 border-style-solid border-color-dustygray2 color-bonjour hover-background-color-dustygray2" href="/user/create_profile">Create my profile</a>
 		<?php endif;?>
-			<a class="text-decoration-none padding background-color-zambezi border-width-1 border-style-solid border-color-dustygray2 color-bonjour hover-background-color-dustygray2" href="/user/delete">Supprimer mon compte</a>
+			<a class="text-decoration-none padding background-color-zambezi border-width-1 border-style-solid border-color-dustygray2 color-bonjour hover-background-color-dustygray2" href="/user/delete">Delete my account</a>
 	</div>
 </div>

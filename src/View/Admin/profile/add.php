@@ -11,7 +11,7 @@
 			<div>
 				<label for="firstname">
 					<div>
-						Nom
+						Lastname
 					</div>
 					<input type="text" name="firstname" id="firstname" minlength="3" required class="padding-xs full-width">
 				</label>
@@ -19,7 +19,7 @@
 			<div>
 				<label for="lastname">
 					<div>
-						Prenom
+						Firstname
 					</div>
 					<input type="text" name="lastname" id="lastname" minlength="3" required class="padding-xs full-width">
 				</label>
@@ -27,7 +27,7 @@
 			<div>
 				<label for="birthdate">
 						<div>
-							Date de naissance
+							Birthdate
 						</div>
 					<input type="date" name="birthdate" id="birthdate" required class="padding-xs full-width">
 				</label>
@@ -43,7 +43,7 @@
 			<div>
 				<label for="address">
 						<div>
-							Adresse
+							Address
 						</div>
 					<input type="text" name="address" id="address" required class="padding-xs full-width">
 				</label>
@@ -51,7 +51,7 @@
 			<div>
 				<label for="zipcode">
 						<div>
-							Code postal
+							Zipcode
 						</div>
 					<input type="text" name="zipcode" id="zipcode" required class="padding-xs full-width">
 				</label>
@@ -59,7 +59,7 @@
 			<div>
 				<label for="city">
 						<div>
-							Ville
+							City
 						</div>
 					<input type="text" name="city" id="city" required class="padding-xs full-width">
 				</label>
@@ -67,7 +67,7 @@
 			<div>
 				<label for="country">
 						<div>
-							Pays
+							Country
 						</div>
 					<input type="text" name="country" id="country" required class="padding-xs full-width">
 				</label>
@@ -75,10 +75,10 @@
 			<div>
 				<label for="country">
 						<div>
-							Abonnement
+							Subscription
 						</div>
 						<select class="padding-xs full-width" name="id_abo" id="id_abo" autocomplete="off" required>
-							<option value="">Selectionnez un abonnement</option>
+							<option value="">Select a subscription</option>
 							<?php	foreach (getSubscriptionList() as $abonnement):	?>
 							<option value="<?= $abonnement["id_abo"]; ?>"><?= $abonnement["nom"]; ?></option>
 							<?php	endforeach;	?>
@@ -87,7 +87,7 @@
 			</div>
 			</div>		
 			<div class="margin-top">
-				<button class="button">Ajouter</button>
+				<button class="button">Add</button>
 				<button type="reset" class="button">Reset</button>
 			</div>
 		</form>

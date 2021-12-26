@@ -1,21 +1,21 @@
-<div class="wrap">
-	<h2>Rechercher un anime</h2>
+<div id="anime-search" class="wrap">
+	<h2>Search anime</h2>
 	<form id="form" class="display-grid grid-auto-flow-row grid-row-gap margin-top-xl" action="/search/anime" method="GET" autocomplete="off">
 		<input type="hidden" name="sort" value="title">
 		<input type="hidden" name="order" value="asc">
 		<div>
 			<label for="title">
-				Titre : 
+				Title :
 				<div class="margin-top">
-					<input type="text" class="padding full-width" placeholder="Titre de l'anime, ex : Absolute Duo" id="title" name="title" value="">
+					<input type="text" class="padding full-width" placeholder="Anime title, e.g : Absolute Duo" id="title" name="title" value="">
 				</div>
 			</label>
-		</div>		
+		</div>
 		<div>
 			<label for="type">
-					Type : 
+					Type :
 					<select class="margin-top padding-xs full-width" name="type" id="type">
-						<option value="">Sélectionner un type</option>
+						<option value="">Type</option>
 						<?php foreach ($types as $type): ?>
 						<option value="<?= htmlspecialchars($type->getField("type")); ?>"><?= htmlspecialchars($type->getField("type")) ?></option>
 						<?php endforeach; ?>
@@ -37,9 +37,9 @@
 		</div>
 		<div>
 			<label for="producer">
-					Producteur :
+					Producer :
 					<select class="margin-top padding-xs full-width" name="producer" id="producer">
-						<option value="">Sélectionner un producteur</option>
+						<option value="">Producer</option>
 						<?php foreach ($producers as $producer): ?>
 						<option value="<?= htmlspecialchars($producer->getField("value")) ?>"><?= htmlspecialchars($producer->getField("value")) ?></option>
 						<?php endforeach; ?>
@@ -50,7 +50,7 @@
 			<label for="studio">
 					Studio :
 					<select class="margin-top padding-xs full-width" name="studio" id="studio">
-						<option value="">Sélectionner un studio</option>
+						<option value="">Studio</option>
 						<?php foreach ($studios as $studio): ?>
 						<option value="<?= htmlspecialchars($studio->getField("value")) ?>"><?= htmlspecialchars($studio->getField("value")) ?></option>
 						<?php endforeach; ?>
@@ -59,18 +59,18 @@
 		</div>
 		<div>
 			<label for="start_date">
-				Date debut affiche : 
+				Start date :
 				<input class="margin-top padding-xs full-width" type="date" name="start_date" id="start_date" value="">
 			</label>
 		</div>
 		<div>
 			<label for="end_date">
-				Date fin affiche : 
+				End date :
 				<input class="margin-top padding-xs full-width" type="date" name="end_date" id="end_date" value="">
 			</label>
 		</div>
 		<div class="display-grid grid-auto-flow-column justify-content-spacebetween">
-			<button class="button">Rechercher</button>
+			<button class="button">Search</button>
 			<button class="button" type="reset">Reset</button>
 		</div>
 	</form>

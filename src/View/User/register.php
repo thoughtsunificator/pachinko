@@ -1,5 +1,5 @@
 <div class="wrap">
-	<h2>Inscription</h2>
+	<h2>Register</h2>
 	<?php	if (isset($message)): ?>
 	<div class="message margin-top-xl<?= isset($success) && $success ? " success" : " error" ?> padding-xs margin-bottom">
 		<?= $message; ?>
@@ -10,7 +10,7 @@
 			<div>
 				<label for="login">
 					<div>
-						Identifiant :
+						Username :
 					</div>
 					<input type="text" name="username" id="username" minlength="3" required class="margin-top padding-xs full-width">
 				</label>
@@ -18,12 +18,12 @@
 			<div>
 				<label for="password">
 					<div>
-						Mot de passe :
+						Password :
 					</div>
 					<input type="password" name="password" id="password" minlength="3" required class="margin-top padding-xs full-width">
 				</label>
 			</div>
-			<button class="margin-top button">S'inscrire</button>
+			<button class="margin-top button">Register</button>
 		</form>
 	</section>
 </div>
