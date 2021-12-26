@@ -24,10 +24,10 @@
 	<div class="margin-top-xl">	
 		<section>
 			<div class="display-grid template-2col1frauto">
-				<h3>Anime vu</h3>
+				<h3>Watched</h3>
 				<?php if (isset($user) && $user->getField("access_level") >= $config::$ACCESS_LEVEL_TO_MODIFY_HISTORY): ?>
 				<div>
-					<a href="?id=<?= $membre->getField('id_membre'); ?>&action=add_anime">Ajouter un anime à l'historique</a>
+					<a href="?id=<?= $membre->getField('id_membre'); ?>&action=add_anime">Add anime to history</a>
 				</div>
 				<?php endif;?>
 			</div>
@@ -61,7 +61,7 @@
 				</div>
 				<?php endforeach; ?>
 				<?php else: ?>
-					<p>Aucun anime ajoutés à l'historique.</p>
+					<p>This user did not watch any anime.</p>
 				<?php endif; ?>
 			</div>
 		</section>
