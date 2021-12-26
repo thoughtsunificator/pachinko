@@ -1,7 +1,7 @@
 <div class="wrap">
 	<h2>Ajouter un  membre</h2>
-	<?php	if (isset($message) === true): ?>
-	<div class="margin-top<?= isset($success) && $success === true ? " background-color-tomthumb" : " background-color-tosca" ?> padding-xs margin-bottom">
+	<?php	if (isset($message)): ?>
+	<div class="margin-top<?= isset($success) && $success ? " background-color-tomthumb" : " background-color-tosca" ?> padding-xs margin-bottom">
 		<?= $message; ?>
 	</div>
 	<?php endif; ?>

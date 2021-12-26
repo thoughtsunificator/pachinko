@@ -1,7 +1,7 @@
 <div class="wrap">
 	<h2>Mon compte</h2>
 	<?php if (isset($message)):?>
-	<div class="margin-top-xl<?= isset($success) && $success === true ? " background-color-tomthumb" : " background-color-tosca" ?> padding-xs margin-bottom">
+	<div class="margin-top-xl<?= isset($success) && $success ? " background-color-tomthumb" : " background-color-tosca" ?> padding-xs margin-bottom">
 		<?= $message; ?>
 	</div>
 	<?php endif;?>

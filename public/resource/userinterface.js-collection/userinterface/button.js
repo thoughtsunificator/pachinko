@@ -18,7 +18,7 @@ UserInterface.model({
  * @param  {boolean} control.active If true the button will be set to active when a certain event is announced.
  */
 UserInterface.bind("collection.button", async function(element, application, control) {
-	if(control.active === true) {
+	if(control.active) {
 		UserInterface.listen(application, control.action, async function(value) {
 			if(value === control.value) {
 				element.classList.add("active")

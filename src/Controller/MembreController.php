@@ -20,7 +20,7 @@ class MembreController extends Controller {
 		$membre = Membre::findOne([
 			"where" => ["id_membre" => $id]
 		]);
-		if ($membre === false) {
+		if ($membre) {
 			echo "ID not found";
 		} else {
 			$membre->setField("fiche_personne", FichePersonne::findOne([
@@ -59,7 +59,7 @@ class MembreController extends Controller {
 		$count = FichePersonne::count(["where" => $fields, "operator" => [0 => "LIKE", 1 => "LIKE"]]);
 		$totalPage = ceil($count / $results_per_page);
 		$page = 1;
-		if(array_key_exists("page", Request::$params) === true) {
+		if(array_key_exists("page", Request::$params)) {
 			$page = (int) min($totalPage, max(Request::$params["page"], 1));
 		}
 		$fiches = FichePersonne::findAll(["where" => $fields, "operator" => $operators, "limit" => ($page - 1) * $results_per_page . ",$results_per_page"]);

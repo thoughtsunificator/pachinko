@@ -39,24 +39,24 @@ final class ORM {
 		$instance = Database::getPDO();
 		$columnText = "*";
 		$operators = [];
-		if (array_key_exists("operator", $params) === true) {
+		if (array_key_exists("operator", $params)) {
 			$operators = $params["operator"];
 		}
-		if (array_key_exists("column", $params) === true) {
+		if (array_key_exists("column", $params)) {
 			$columnText = $params["column"];
 		}
 		$query = "select $columnText from $table";
 		$values = [];
 
-		if (array_key_exists("join", $params) === true) {
+		if (array_key_exists("join", $params)) {
 			$query .= " ". implode($params["join"]);
 		}
 
-		if (array_key_exists("where", $params) === true && count($params["where"]) >= 1) {
+		if (array_key_exists("where", $params) && count($params["where"]) >= 1) {
 			$columns = [];
 			foreach ($params["where"] as $key => $value) {
 				$operator = "=";
-				if(array_key_exists($key, $operators) === true) {
+				if(array_key_exists($key, $operators)) {
 					$operator = $operators[$key];
 				}
 				if($operator === "IN") {
@@ -70,13 +70,13 @@ final class ORM {
 			$columnsText = implode(" AND ", $columns);
 			$query .= " where $columnsText";
 		}
-		if (array_key_exists("group", $params) === true) {
+		if (array_key_exists("group", $params)) {
 			$query .= " group by ". $params["group"];
 		}
-		if (array_key_exists("order", $params) === true) {
+		if (array_key_exists("order", $params)) {
 			$query .= " order by ". $params["order"];
 		}
-		if (array_key_exists("limit", $params) === true) {
+		if (array_key_exists("limit", $params)) {
 			$query .= " limit ". $params["limit"];
 		}
 		Debug::logQuery($query, $values);

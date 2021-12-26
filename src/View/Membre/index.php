@@ -1,5 +1,5 @@
 <div class="wrap">
-	<?php if (isset($message) === true): ?>
+	<?php if (isset($message)): ?>
 	<p class="background-color-tomthumb padding-xs margin-bottom">
 		<?=$message;?>
 	</p>
@@ -35,7 +35,7 @@
 			<div class="display-grid template-2col1frauto border-width-1 border-style-solid border-bottom border-color-gray padding-vertical-2xs">
 				<div class="bold">Abonnement</div>
 				<div><?= $membre->getField('id_abo') !== null ? $membre->getField('abonnement')->getField("nom") : "Non abonné(e)"; ?> 
-				<?php if (isset($user) === true && $user->getField("access_level") >= $config::$ACCESS_LEVEL_TO_MODIFY_SUBSCRIPTION): ?>
+				<?php if (isset($user) && $user->getField("access_level") >= $config::$ACCESS_LEVEL_TO_MODIFY_SUBSCRIPTION): ?>
 				(<a href="?id=<?= $membre->getField('id_membre'); ?>&action=update_subscription">Modifier l'abonnement</a>)
 				<?php endif;?>
 				</div>
@@ -46,7 +46,7 @@
 		<section>
 			<div class="display-grid template-2col1frauto">
 				<h3>Anime vu</h3>
-				<?php if (isset($user) === true && $user->getField("access_level") >= $config::$ACCESS_LEVEL_TO_MODIFY_HISTORY): ?>
+				<?php if (isset($user) && $user->getField("access_level") >= $config::$ACCESS_LEVEL_TO_MODIFY_HISTORY): ?>
 				<div>
 					<a href="?id=<?= $membre->getField('id_membre'); ?>&action=add_anime">Ajouter un anime à l'historique</a>
 				</div>
@@ -62,7 +62,7 @@
 					<div>
 						<?= $anime->getField('title'); ?>
 					</div>
-					<?php if (isset($user) === true && $user->getField("access_level") >= $config::$ACCESS_LEVEL_TO_MODIFY_HISTORY): ?>
+					<?php if (isset($user) && $user->getField("access_level") >= $config::$ACCESS_LEVEL_TO_MODIFY_HISTORY): ?>
 					<div>
 						<a href="?id=<?= $membre->getField('id_membre'); ?>&action=remove_anime&id_anime=<?= $anime->getField('id_anime'); ?>">Supprimer</a>
 					</div>

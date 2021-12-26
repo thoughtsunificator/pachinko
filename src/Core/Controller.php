@@ -34,7 +34,7 @@ abstract class Controller {
 		extract($scope);
 		$reflection = new \ReflectionClass($this);
 		$view = __DIR__ . "/../View/" . substr($reflection->getShortName(), 0, - strlen("Controller")) . "/$view.php";
-		if (file_exists($view) === true) {
+		if (file_exists($view)) {
 			Debug::$viewPath = $view;
 			ob_start();
 			require(__DIR__ . "/../View/Layout/". $layout . ".php");

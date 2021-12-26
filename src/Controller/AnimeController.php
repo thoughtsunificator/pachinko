@@ -20,7 +20,7 @@ class AnimeController extends Controller {
 		$anime = Anime::findOne([
 			"where" => ["id_anime" => $id]
 		]);
-		if ($anime === false) {
+		if ($anime) {
 			echo "ID not found";
 		} else {
 			$metas = AnimeMeta::findAll(["where" => ["id_anime" => $id]]);
@@ -111,7 +111,7 @@ class AnimeController extends Controller {
 		$results_per_page = Config::$RESULTS_PER_PAGE;
 		$totalPage = ceil($count / $results_per_page);
 		$page = 1;
-		if(array_key_exists("page", Request::$params) === true) {
+		if(array_key_exists("page", Request::$params)) {
 			$page = (int) min($totalPage, max(Request::$params["page"], 1));
 		}
 
@@ -143,7 +143,7 @@ class AnimeController extends Controller {
 		$results_per_page = Config::$RESULTS_PER_PAGE;
 		$totalPage = ceil($count / $results_per_page);
 		$page = 1;
-		if(array_key_exists("page", Request::$params) === true) {
+		if(array_key_exists("page", Request::$params)) {
 			$page = (int) min($totalPage, max(Request::$params["page"], 1));
 		}
 		$results = Anime::findAll(array_merge($filter, [

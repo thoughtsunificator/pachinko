@@ -27,7 +27,7 @@ UserInterface.bind("collection.resizable.preview", async function(element, appli
 
 
 	document.addEventListener("mouseup", (event) => {
-		if(resizable.resizing === true) {
+		if(resizable.resizing) {
 			UserInterface.announce(application, "resizable end", { x: event.clientX, y: event.clientY})
 		}
 	})
