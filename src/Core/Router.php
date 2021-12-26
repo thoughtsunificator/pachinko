@@ -14,16 +14,16 @@ final class Router {
 	private function __construct() {}
 	
 	/**
-	 * @param  [string] $url   [description]
-	 * @param  [array] 	$route [description]
+	 * @param  [string] $url
+	 * @param  [array] 	$route
 	 */
 	public static function get($url, $route)	{
 		array_push(self::$_routes, ["method" => "GET", "url" => $url, "data" => $route]);
 	}
 
 	/**
-	 * @param  [string] $url   [description]
-	 * @param  [array] 	$route [description]
+	 * @param  [string] $url
+	 * @param  [array] 	$route
 	 */
 	public static function post($url, $route)	{
 		array_push(self::$_routes, ["method" => "POST", "url" => $url, "data" => $route]);
@@ -31,8 +31,8 @@ final class Router {
 
 	/**
 	 * Returns a route acording to the current URI
-	 * @param  [string] $method [description]
-	 * @param  [string] $url    [description]
+	 * @param  [string] $method
+	 * @param  [string] $url
 	 * @return [array]         	[description]
 	 */
 	public static function getRoute($method, $url) {

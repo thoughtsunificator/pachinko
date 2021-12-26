@@ -23,7 +23,7 @@
 					<input type="password" name="password" id="password"  minlength="3" required class="margin-top padding-xs full-width">
 				</label>
 			</div>
-			<button class="margin-top padding-vertical-small padding-horizontal background-color-dustygray border-width-1 border-style-solid border-color-dustygray2 color-bonjour hover-background-color-dustygray2 half-width margin-auto">Se connecter</button>
+			<button class="margin-top button half-width margin-auto">Se connecter</button>
 		</form>
 	</section>
 </div>

@@ -48,7 +48,7 @@ final class ORM {
 			$query .= " ". implode($params["join"]);
 		}
 
-		if (array_key_exists("where", $params) === true) {
+		if (array_key_exists("where", $params) === true && count($params["where"]) >= 1) {
 			$columns = [];
 			foreach ($params["where"] as $key => $value) {
 				$operator = "=";
@@ -56,10 +56,10 @@ final class ORM {
 					$operator = $operators[$key];
 				}
 				if($operator === "IN") {
-					array_push($columns, (!str_contains($key, ".") ? "$table." : "")."$key $operator (" . implode(",", array_fill(0, count($value), "?")) . ")");
+					array_push($columns, "$key $operator (" . implode(",", array_fill(0, count($value), "?")) . ")");
 					$values = array_merge($values, $value);
 				} else {
-					array_push($columns, (!str_contains($key, ".") ? "$table." : "")."$key $operator ?");
+					array_push($columns, "$key $operator ?");
 					array_push($values, $value);
 				}
 			}

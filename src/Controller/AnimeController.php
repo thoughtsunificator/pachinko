@@ -72,33 +72,35 @@ class AnimeController extends Controller {
 		$fieldsMeta = [];
 		$operators = [];
 		$joins = [];
-		$fields["anime.title"] = "%" . Request::$params["title"] . "%";
-		$operators["anime.title"] = "LIKE";
 		$entity = Anime::class;
+		if(array_key_exists("title", Request::$params) && Request::$params["title"] !== "") {
+			$fields["anime.title"] = "%" . Request::$params["title"] . "%";
+			$operators["anime.title"] = "LIKE";
+		}
 
-		if (Request::$params["type"] !== "") {
+		if (array_key_exists("type", Request::$params) && Request::$params["type"] !== "") {
 			$fields["type"] = Request::$params["type"];
 		}
-		if (array_key_exists("genre", Request::$params)) {
+		if (array_key_exists("genre", Request::$params) && Request::$params["genre"] !== "") {
 			$entity = AnimeMeta::class;
 			$fields["anime_meta.name"] = "genre";
 			$fields["anime_meta.value"] = Request::$params["genre"];
 			$operators["anime_meta.value"] = "IN";
 		}
-		if (Request::$params["producer"] !== "") {
+		if (array_key_exists("producer", Request::$params) && Request::$params["producer"] !== "") {
 			$entity = AnimeMeta::class;
 			$fields["anime_meta.name"] = "producer";
 			$fields["anime_meta.value"] = Request::$params["producer"];
 		}
-		if (Request::$params["studio"] !== "") {
+		if (array_key_exists("studio", Request::$params) && Request::$params["studio"] !== "") {
 			$entity = AnimeMeta::class;
 			$fields["anime_meta.name"] = "studio";
 			$fields["anime_meta.value"] = Request::$params["studio"];
 		}
-		if (Request::$params["start_date"] !== "") {
+		if (array_key_exists("start_date", Request::$params) && Request::$params["start_date"] !== "") {
 			$fields["start_date"] = Request::$params["start_date"];
 		}
-		if (Request::$params["end_date"] !== "") {
+		if (array_key_exists("end_date", Request::$params) && Request::$params["end_date"] !== "") {
 			$fields["end_date"] = Request::$params["end_date"];
 		}
 		if($entity === AnimeMeta::class) {
@@ -113,10 +115,14 @@ class AnimeController extends Controller {
 			$page = (int) min($totalPage, max(Request::$params["page"], 1));
 		}
 
-		$results = $entity::findAll(array_merge($filter, [
-			"limit" => ($page - 1) * $results_per_page . ",$results_per_page", 
-			"order" => Request::$params["sort"]." ".Request::$params["order"]
-		]));
+		$params = array_merge($filter, [ "limit" => ($page - 1) * $results_per_page . ",$results_per_page" ]);
+
+		if(array_key_exists("sort", Request::$params) && Request::$params["sort"] !== ""
+			&& array_key_exists("order", Request::$params) && Request::$params["order"] !== "") {
+			$params["order"] = Request::$params["sort"]." ".Request::$params["order"];
+		}
+
+		$results = $entity::findAll($params);
 		$this->render("list", [
 			"title" => "Recherche d'anime", 
 			"results" => $results,

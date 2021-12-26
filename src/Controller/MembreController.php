@@ -48,10 +48,13 @@ class MembreController extends Controller {
 	 * GET /search/member
 	 */
 	public function list() {
-		$fields = [
-			"nom" => "%" . Request::$params["nom"] . "%", 
-			"prenom" => "%" . Request::$params["prenom"] . "%"
-		];
+		$fields = [];
+		$operators = [];
+		if(array_key_exists("query", Request::$params) && Request::$params["query"] !== "") {
+			$fieldName = 'concat_ws(" ", nom, prenom)';
+			$fields[$fieldName] = "%" . Request::$params["query"] . "%";
+			$operators[$fieldName] = "LIKE";
+		}
 		$results_per_page = Config::$RESULTS_PER_PAGE;
 		$count = FichePersonne::count(["where" => $fields, "operator" => [0 => "LIKE", 1 => "LIKE"]]);
 		$totalPage = ceil($count / $results_per_page);
@@ -59,7 +62,7 @@ class MembreController extends Controller {
 		if(array_key_exists("page", Request::$params) === true) {
 			$page = (int) min($totalPage, max(Request::$params["page"], 1));
 		}
-		$fiches = FichePersonne::findAll(["where" => $fields, "operator" => [0 => "LIKE", 1 => "LIKE"], "limit" => ($page - 1) * $results_per_page . ",$results_per_page"]);
+		$fiches = FichePersonne::findAll(["where" => $fields, "operator" => $operators, "limit" => ($page - 1) * $results_per_page . ",$results_per_page"]);
 		foreach ($fiches as &$fiche) {
 			$fiche->setField("membre", Membre::findOne(["where" => ["id_fiche_perso" => $fiche->getField("id_perso")]]));
 		}

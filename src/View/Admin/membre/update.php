@@ -82,8 +82,8 @@
 			</div>
 			</div>		
 			<div class="margin-top">
-				<button name="update" class="padding-vertical-small padding-horizontal background-color-dustygray border-width-1 border-style-solid border-color-dustygray2 color-bonjour hover-background-color-dustygray2">Modifier</button>
-				<button type="reset" class="padding-vertical-small padding-horizontal background-color-dustygray border-width-1 border-style-solid border-color-dustygray2 color-bonjour hover-background-color-dustygray2">Reset</button>
+				<button name="update" class="button">Modifier</button>
+				<button type="reset" class="button">Reset</button>
 			</div>
 		</form>
 	</section>
