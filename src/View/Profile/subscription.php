@@ -1,4 +1,4 @@
-<div class="wrap">
+<div id="profile-subscription" class="wrap">
 	<h2>Modifier l'abonnement de <?= htmlspecialchars($membre["fiche_personne_nom"]). " ". htmlspecialchars($membre["prenom"]); ?></h2>
 	<form class="margin-top" action="?id=<?= $membre['id_membre']; ?>&action=update_subscription" method="POST">
 	<fieldset>

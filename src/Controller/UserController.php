@@ -14,28 +14,28 @@ class UserController extends Controller {
 	 * GET /user
 	 */
 	public function index() {
-		$this->render("index", ["title" => "Mon compte"]);
+		$this->render("index", ["title" => "Account"]);
 	}
 
 	/**
 	 * GET /user/edit
 	 */
 	public function edit() {
-		$this->render("edit", ["title" => "Mettre à jours mes informations"]);
+		$this->render("edit", ["title" => "Update my account"]);
 	}
 
 	/**
 	 * GET /user/delete
 	 */
 	public function delete() {
-		$this->render("delete", ["title" => "Supprimer mon compte"]);
+		$this->render("delete", ["title" => "Delete my account"]);
 	}
 
 	/**
 	 * GET /user/create_profile
 	 */
 	public function create_profile() {
-		$this->render("create_profile", ["title" => "Creer mon profil"]);
+		$this->render("create_profile", ["title" => "Create my profile"]);
 	}
 
 	/**
@@ -50,7 +50,7 @@ class UserController extends Controller {
 			$user->setField("password", Request::$body["password"]);
 		}
 		$user->save();
-		$this->render("edit", ["title" => "Mettre à jours mes informations"]);
+		$this->render("edit", ["title" => "Update my account"]);
 	}
 
 	/**
@@ -84,9 +84,9 @@ class UserController extends Controller {
 	 */
 	public function login() {
 		if (array_key_exists("id_user", $_SESSION)) {
-			print("Vous êtes déja connecté.");
+			print("You are already logged in.");
 		} else {
-			$this->render("login", ["title" => "Se connecter"]);
+			$this->render("login", ["title" => "Login"]);
 		}
 	}
 
@@ -95,7 +95,7 @@ class UserController extends Controller {
 	 */
 	public function loginPost() {
 		if (array_key_exists("id_user", $_SESSION)) {
-			print("Vous êtes déja connecté.");
+			print("You are already logged in.");
 		} else {
 			if(!array_key_exists("username", Request::$body) || !array_key_exists("password", Request::$body)) {
 				print("Error: Missing POST parameters.");
@@ -108,9 +108,9 @@ class UserController extends Controller {
 					$_SESSION["id_user"] = $user->getField("id_user");
 					header("Location: /");
 				} else {
-					$message = "Mot de passe erroné.";
+					$message = "Credentials mistmatch.";
 				}
-				$this->render("login", ["message" => $message, "title" => "Se connecter", "success" => $success]);
+				$this->render("login", ["message" => $message, "title" => "Login", "success" => $success]);
 			}
 		}
 	}
@@ -120,9 +120,9 @@ class UserController extends Controller {
 	 */
 	public function register() {
 		if (array_key_exists("id_user", $_SESSION)) {
-			print("Il faut être déconnecté pour pouvoir s'inscrire.");
+			print("You must be logged out to register.");
 		} else {
-			$this->render("register", ["title" => "S'inscrire"]);
+			$this->render("register", ["title" => "Register"]);
 		}
 	}
 
@@ -131,7 +131,7 @@ class UserController extends Controller {
 	 */
 	public function registerPost() {
 		if (array_key_exists("id_user", $_SESSION)) {
-			print("Il faut être déconnecté pour pouvoir s'inscrire.");
+			print("You must be logged out to register.");
 		} else {
 			if(!array_key_exists("username", Request::$body) || !array_key_exists("password", Request::$body)) {
 				print("Error: Missing POST parameters.");
@@ -140,23 +140,23 @@ class UserController extends Controller {
 				$password = Request::$body["password"];
 				$success = false;
 				if(!Config::$REGISTRATION_ENABLED) {
-					$message = "Les inscriptions sont désactivées. Veuillez contacter un administrateur.";
+					$message = "Registrations are disabled. Please contact an administrator.";
 				} else {
 					$user = User::findOne(["where" => ["username" => $username]]);
 					if ($user !== false) {
 						$message = "Cette email est déja prise.";
 					} else if (strlen($username) < 3) {
-						$message = "Le nom d'utilisateur doit au minimum comprendre 3 caractères";
+						$message = "Username must be at least 3 characters long";
 					} else if (strlen($password) < 3) {
-						$message = "Le mot de passe doit au minimum comprendre 3 caractères";
+						$message = "Password must be at least 3 characters long";
 					} else {
 						$user = new User(["username" => $username, "password" => $password]);
 						$user->save();
-						$message = "Bienvenu parmis nous $username!";
+						$message = "Welcome $username!";
 						$success = true;
 					}
 				}
-				$this->render("register", ["message" => $message, "title" => "S'inscrire", "success" => $success]);
+				$this->render("register", ["message" => $message, "title" => "Register", "success" => $success]);
 			}
 		}
 	}

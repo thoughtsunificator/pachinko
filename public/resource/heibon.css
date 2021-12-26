@@ -222,38 +222,38 @@ main a:hover {
 	left: var(--SIZE_MEDIUM);
 }
 
-#search-results .filters {
+.search-results .filters {
 	margin-top: var(--SIZE_XL);
 	padding-bottom: var(--SIZE_MEDIUM);
 	border-bottom: 1px solid #a69898;
 }
 
-#search-results .filter {
+.search-results .filter {
 	padding: var(--SIZE_XXS) var(--SIZE_MEDIUM);
 	background-color: #605757;
 	border: 1px solid #a69898;
 	color: #e6e2e2;
 }
 
-#search-results .results {
+.search-results .results {
 	display: grid;
 	grid-template-columns: repeat(5, auto);
 	margin-top: var(--SIZE_MEDIUM);
 	grid-gap: var(--SIZE_MEDIUM);
 }
 
-#search-results .results .result {
+.search-results .results .result {
 	display: grid;
 	align-content: baseline;
 	justify-items: center;
 	grid-gap: var(--SIZE_MEDIUM);
 }
 
-#search-results .results .result img {
+.search-results .results .result img {
 	border: 1px solid gray;
 }
 
-#search-results > p {
+.search-results > p {
 	margin-top: var(--SIZE_XL);
 }
 

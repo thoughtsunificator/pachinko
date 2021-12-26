@@ -4,10 +4,10 @@
 		<input type="hidden" id="id"  name="id" value="<?= $membre['id_membre']; ?>">
 		<input type="hidden" id="action"  name="action" value="add_anime">
 		<div>
-				<input type="text" class="padding-xs full-width" placeholder="Titre de l'anime, ex : Absolute Duo" id="title" name="title" value="">
+				<input type="text" class="padding-xs full-width" placeholder="Title de l'anime, ex : Absolute Duo" id="title" name="title" value="">
 		</div>
 		<div>
-			<button class="button">Rechercher</button>
+			<button class="button">Search</button>
 		</div>
 	</form>
 </div>

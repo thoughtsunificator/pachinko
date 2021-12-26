@@ -1,4 +1,4 @@
-<div class="wrap">
+<div id="anime-index" class="wrap">
 	<?php if (isset($message)): ?>
 	<p class="background-color-tomthumb padding-xs margin-bottom">
 		<?= $message;?>
@@ -16,7 +16,7 @@
 				}
 			}
 			?>
-			<img src="<?= htmlspecialchars($image) ?>" alt="Image du anime">
+			<img src="<?= htmlspecialchars($image) ?>" alt="Anime cover">
 			<div class="border-width-1 border-style-solid border-bottom padding-vertical-2xs">
 				<div class="color-silver">Type</div>
 				<div><a href="/search/anime?type=<?= $anime->getField('type') ?>"><?= $anime->getField('type') ?></a></div>
@@ -29,19 +29,19 @@
 			<?php endif?>
 			<?php if($anime->getField('start_date') !== null):?>
 			<div class="border-width-1 border-style-solid border-bottom padding-vertical-2xs">
-				<div class="color-silver">Date de debut</div>
+				<div class="color-silver">Start date</div>
 				<div><?= htmlspecialchars($anime->getField('start_date')) ?></div>
 			</div>
 			<?php endif?>
 			<?php if($anime->getField('end_date') !== null):?>
 			<div class="border-width-1 border-style-solid border-bottom padding-vertical-2xs">
-				<div class="color-silver">Date de fin</div>
+				<div class="color-silver">End date</div>
 				<div><?= htmlspecialchars($anime->getField('end_date')) ?></div>
 			</div>
 			<?php endif?>
 			<?php if($anime->getField('duration') !== null):?>
 			<div class="border-width-1 border-style-solid border-bottom padding-vertical-2xs">
-				<div class="color-silver">Durée</div>
+				<div class="color-silver">Duration</div>
 				<div><?= htmlspecialchars($anime->getField('duration')) ?></div>
 			</div>
 			<?php endif?>
@@ -94,20 +94,20 @@
 			<?php if ($anime->getField('trailer') !== null) :?>
 			<iframe class="margin-top" src="<?= htmlspecialchars($anime->getField('trailer')) ?>" allowfullscreen="" width="625" height="455" frameborder="0">_YL7t_QbQ2M</iframe>
 			<?php else:?>
-			<p class="margin-top">Pas de trailer.</p>
+			<p class="margin-top">No trailer found.</p>
 			<?php endif?>
 			</div>
 			<div class="margin-top">
 				<h3>Episodes</h3>
 				<?php if (count($episodes) >= 0):?>
-				<p class="margin-top">Pas de lien en streaming disponible pour le moment.</p>
+				<p class="margin-top">Streaming not available for this anime.</p>
 				<?php endif?>
 			</div>
 		</div>
 	</div>
 	<div class="display-grid grid-gap margin-top-xl">
 	<div class="margin-top-xl">
-		<h2>Les avis..</h2>
+		<h2>Reviews..</h2>
 		<?php if (count($reviews) >= 1): ?>
 			<div class="display-grid grid-gap margin-top">
 			<?php while ($review = $reviews->fetch()): ?>
@@ -128,20 +128,20 @@
 				<?php if (isset($user) && $user["access_level"] >= ACCESS_LEVEL_ADMINISTRATOR): ?>
 				<?php endif?>
 		</div>
-	</div>	
+	</div>
 	<?php endwhile ?>
 	</div>
 	<?php else: ?>
-	<p class="margin-top">Aucun avis n'a été posté pour ce media</p>
-	<?php endif ?>		
+	<p class="margin-top">No reviews were found for this anime.</p>
+	<?php endif ?>
 	<div class="margin-top">
 		<form class="margin-top" action="?id=<?= $anime->getField('id_anime') ?>&action=add_review" method="POST">
-			<h3>A vous de jouer.</h3>
+			<h3>It's your turn.</h3>
 			<div class="margin-top">
 					<textarea class="full-width background-color-mineshaft border-width-1 border-style-solid border-color-emperor color-white padding-xs" name="review" id="review" required minlength="10"></textarea>
 			</div>
 			<div class="display-grid justify-content-flexend margin-top">
-					<button class="button">Valider</button>
+					<button class="button">Send</button>
 			</div>
 		</form>
 	</div>

@@ -14,8 +14,8 @@ class SearchController extends Controller {
 		if(array_key_exists("type", Request::$body) && Request::$body["type"] !== "") {
 			if(Request::$body["type"] === "anime") {
 				header("Location: /search/anime?title=". Request::$body["query"]);
-			} else if(Request::$body["type"] === "member") {
-				header("Location: /search/member?query=". Request::$body["query"]);
+			} else if(Request::$body["type"] === "profile") {
+				header("Location: /search/profile?query=". Request::$body["query"]);
 			}
 		}
 	}

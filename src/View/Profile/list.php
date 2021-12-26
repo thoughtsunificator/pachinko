@@ -1,10 +1,10 @@
-<div id="search-results" class="wrap">
-	<h2>Resultat de la recherche</h2>
+<div id="profile-list" class="search-results wrap">
+	<h2>Results</h2>
 	<?php	if(count($results) >= 1):	?>
 	<div class="results">
 	<?php	foreach($results as $result):	?>
 		<div class="result">
-		<a href="/member/<?= $result->getField("membre")->getField('id_membre'); ?>/<?= urlencode(htmlspecialchars($result->getField('nom'). " ". $result->getField('prenom')))?>">
+		<a href="/users/<?= $result->getField("membre")->getField('id_membre'); ?>/<?= urlencode(htmlspecialchars($result->getField('nom'). " ". $result->getField('prenom')))?>">
 			<?php
 			$image = "/resource/image/avatar/default.png";
 			if($result->getField("avatar") !== null && $result->getField("avatar") !== "") {

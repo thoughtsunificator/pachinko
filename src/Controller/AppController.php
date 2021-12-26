@@ -14,7 +14,7 @@ class AppController extends Controller {
 	 * GET /
 	 */
 	public function index() {
-		$this->render("index", ["title" => "Page d'accueil"]);
+		header("Location: /anime");
 	}
 
 }

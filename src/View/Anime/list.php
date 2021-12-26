@@ -11,14 +11,14 @@ $filterA["order"] = $order;
 $filterB["order"] = $order;
 ?>
 
-<div id="search-results" class="wrap">
-	<h2>Resultat de la recherche</h2>
+<div id="anime-list" class="search-results wrap">
+	<h2>Results</h2>
 	<?php	if(count($results) >= 1):	?>
 	<div class="filters">
 		<span>
 		Trier par:
 		</span>
-		<a class="filter" href="?<?= http_build_query($filterA) ?>">Titre</a>
+		<a class="filter" href="?<?= http_build_query($filterA) ?>">Title</a>
 		<a class="filter" href="?<?= http_build_query($filterB) ?>">Date</a>
 	</div>
 	<div class="results">
@@ -35,7 +35,7 @@ $filterB["order"] = $order;
 			}
 			?>
 			<a href="/anime/<?=$anime->getField('id_anime');?>/<?= urlencode(htmlspecialchars($anime->getField("title"))) ?>">
-				<img width="150" src="<?= htmlspecialchars($image) ?>" alt="Image du anime"></a>
+				<img width="150" src="<?= htmlspecialchars($image) ?>" alt="Anime cover"></a>
 				<div>
 					<?= htmlspecialchars($anime->getField('title')); ?>
 				</div>

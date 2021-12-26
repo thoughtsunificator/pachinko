@@ -6,7 +6,7 @@
 			<div>
 				<label for="firstname">
 					<div>
-						Nom
+						Lastname
 					</div>
 					<input type="text" name="firstname" id="firstname" minlength="3" required class="padding-xs full-width" value="<?= htmlspecialchars($membre["fiche_personne_nom"]) ?>">
 				</label>
@@ -14,7 +14,7 @@
 			<div>
 				<label for="lastname">
 					<div>
-						Prenom
+						Firstname
 					</div>
 					<input type="text" name="lastname" id="lastname" minlength="3" required class="padding-xs full-width" value="<?= htmlspecialchars($membre["prenom"]) ?>">
 				</label>
@@ -22,7 +22,7 @@
 			<div>
 				<label for="birthdate">
 						<div>
-							Date de naissance
+							Birthdate
 						</div>
 					<input type="date" name="birthdate" id="birthdate" required class="padding-xs full-width" value="<?= date("Y-m-d", strtotime(htmlspecialchars($membre["date_naissance"]))) ?>">
 				</label>
@@ -38,7 +38,7 @@
 			<div>
 				<label for="address">
 						<div>
-							Adresse
+							Address
 						</div>
 					<input type="text" name="address" id="address" required class="padding-xs full-width" value="<?= htmlspecialchars($membre["adresse"]) ?>">
 				</label>
@@ -46,7 +46,7 @@
 			<div>
 				<label for="zipcode">
 						<div>
-							Code postal
+							Zipcode
 						</div>
 					<input type="text" name="zipcode" id="zipcode" required class="padding-xs full-width" value="<?= htmlspecialchars($membre["cpostal"]) ?>">
 				</label>
@@ -54,7 +54,7 @@
 			<div>
 				<label for="city">
 						<div>
-							Ville
+							City
 						</div>
 					<input type="text" name="city" id="city" required class="padding-xs full-width" value="<?= htmlspecialchars($membre["ville"]) ?>">
 				</label>
@@ -62,7 +62,7 @@
 			<div>
 				<label for="country">
 						<div>
-							Pays
+							Country
 						</div>
 					<input type="text" name="country" id="country" required class="padding-xs full-width" value="<?= htmlspecialchars($membre["pays"]) ?>">
 				</label>
@@ -70,10 +70,10 @@
 			<div>
 				<label for="country">
 						<div>
-							Abonnement
+							Subscription
 						</div>
 						<select class="padding-xs full-width" name="id_abo" id="id_abo" autocomplete="off" required>
-							<option value="">Selectionnez un abonnement</option>
+							<option value="">Select a subscription</option>
 							<?php	foreach (getSubscriptionList() as $abonnement):	?>
 							<option<?php ($abonnement["id_abo"] === $membre["id_abo"] ? print(" selected=\"selected\"") : "") ?> value="<?= $abonnement["id_abo"]; ?>"><?= htmlspecialchars($abonnement["nom"]); ?></option>
 							<?php	endforeach;	?>
@@ -82,7 +82,7 @@
 			</div>
 			</div>		
 			<div class="margin-top">
-				<button name="update" class="button">Modifier</button>
+				<button name="update" class="button">Update</button>
 				<button type="reset" class="button">Reset</button>
 			</div>
 		</form>

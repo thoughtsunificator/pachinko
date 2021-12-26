@@ -1,6 +1,6 @@
-<div class="wrap">
-	<h2>Rechercher un membre</h2>
-	<form id="form" class="display-grid grid-auto-flow-row grid-row-gap margin-top-xl" action="/search/member" method="GET" autocomplete="off">
+<div id="profile-search" class="wrap">
+	<h2>Search users</h2>
+	<form id="form" class="display-grid grid-auto-flow-row grid-row-gap margin-top-xl" action="/search/users" method="GET" autocomplete="off">
 		<div>
 			<label for="query">
 					Query :
@@ -8,7 +8,7 @@
 			</label>
 		</div>
 		<div>
-			<button class="button">Rechercher</button>
+			<button class="button">Search</button>
 			<button class="button" type="reset">Reset</button>
 		</div>
 	</form>
