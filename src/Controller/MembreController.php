@@ -20,7 +20,7 @@ class MembreController extends Controller {
 		$membre = Membre::findOne([
 			"where" => ["id_membre" => $id]
 		]);
-		if ($membre) {
+		if (!$membre) {
 			echo "ID not found";
 		} else {
 			$membre->setField("fiche_personne", FichePersonne::findOne([
