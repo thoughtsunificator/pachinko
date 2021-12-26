@@ -1,0 +1,99 @@
+/* Constants & Variables */
+:root
+{
+	--COLOR_TUNDORA: #464040;
+	--COLOR_TUNDORA2: #484444;
+	--COLOR_BONJOUR: #e6e2e2;
+	--COLOR_TOSCA: #894242;
+	--COLOR_SILVER: #c6c6c6;
+	--COLOR_MASALA: #3e3737;
+	--COLOR_BUNCCANEER: #713333;
+	--COLOR_MINESHAFT: #2b2727;
+}
+
+.background-color-silver {
+	background-color: var(--COLOR_SILVER);
+}
+
+.background-color-tosca {
+	background-color: var(--COLOR_TOSCA);
+}
+
+.background-color-bunccaneer
+{
+	background-color: var(--COLOR_BUNCCANEER);
+}
+
+.background-color-mineshaft {
+	background-color: var(--COLOR_MINESHAFT);
+}
+
+.even-background-color-tundora2:nth-child(even) {
+	background-color: var(--COLOR_TUNDORA2);
+}
+
+.color-masala {
+	color: var(--COLOR_MASALA);
+}
+
+.color-bonjour {
+	color: var(--COLOR_BONJOUR);
+}
+
+.hover-color-tosca:hover {
+	color: var(--COLOR_TOSCA);
+}
+
+#console.open {
+	border-top: 1px solid #615959;
+}
+
+#console .bar {
+	border-top: 1px solid #615959;
+}
+
+#console .closeBtn {
+	cursor: pointer;
+}
+
+#console .closeBtn:hover {
+	background-color: rgb(133, 90, 90) !important;
+}
+
+#console .tab {
+	color: white;
+	cursor: pointer;
+	text-decoration: none;
+	padding-top: var(--SIZE_XS);
+	padding-bottom: var(--SIZE_XS);
+	padding-left: var(--SIZE_MEDIUM);
+	padding-right: var(--SIZE_MEDIUM);
+	border-width: 0;
+	background-color: #1a1a1a;
+}
+
+#console .tab:hover {
+	background-color: #252222;
+}
+
+#console .tab.active {
+	background-color: #464040;
+	border-top: 1px solid #615959;
+}
+
+#console .tab + .tab {
+	border-left: 1px solid #615959;
+}
+
+#console .row {
+	padding: var(--SIZE_XXS);
+	background-color: #464040;
+}
+
+#console .row:nth-child(even) {
+	background-color: #232323;
+}
+
+body.consoru #footer {
+	padding-bottom: 65px;
+}

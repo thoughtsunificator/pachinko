@@ -29,6 +29,9 @@
 body {
 	background-color: #464040;
 	color: white;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	height: 100vh;
 }
 
 a {
@@ -38,6 +41,14 @@ a {
 
 a:hover {
 	text-decoration: underline;
+}
+
+.message.success {
+	background-color: #365732;
+}
+
+.message.error {
+	background-color: #894242;
 }
 
 .button {
@@ -91,6 +102,9 @@ a:hover {
 }
 
 #header form input {
+	background-color: #efefef2b;
+	border: 1px solid white;
+	color: white;
 	padding: var(--SIZE_XS);
 }
 
@@ -151,7 +165,6 @@ a:hover {
 }
 
 main {
-	min-height: 55em;
 	margin-top: var(--SIZE_XL);
 }
 

@@ -4,6 +4,7 @@ namespace Core;
 
 use \Core\Router;
 use \Core\Config;
+use \Core\Debug;
 
 abstract class Controller {
 
@@ -27,11 +28,14 @@ abstract class Controller {
 		if($layout === null) {
 			$layout = Config::$LAYOUT;
 		}
+		Debug::$controllerScope = self::$scope;
 		$scope = array_merge(self::$scope, $scope);
+		Debug::$viewScope = $scope;
 		extract($scope);
 		$reflection = new \ReflectionClass($this);
 		$view = __DIR__ . "/../View/" . substr($reflection->getShortName(), 0, - strlen("Controller")) . "/$view.php";
 		if (file_exists($view) === true) {
+			Debug::$viewPath = $view;
 			ob_start();
 			require(__DIR__ . "/../View/Layout/". $layout . ".php");
 			self::$render = ob_get_clean();

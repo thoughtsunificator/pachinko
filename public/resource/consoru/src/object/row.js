@@ -1,0 +1,3 @@
+Consoru.Row = function() {
+
+}

@@ -1,11 +1,11 @@
 <div class="wrap">
 	<h2>Connexion</h2>
 	<?php	if (isset($message) === true): ?>
-	<div class="margin-top-xl<?= isset($success) && $success === true ? " background-color-tomthumb" : " background-color-tosca" ?> padding-xs margin-bottom">
+	<div class="message margin-top-xl<?= isset($success) && $success === true ? " success" : " error" ?> padding-xs margin-bottom">
 		<?= $message; ?>
 	</div>
 	<?php endif; ?>
-	<section class="margin-top-xl display-grid grid-gap margin-horizontal-auto background-color-mineshaft padding-large">
+	<section class="margin-top-xl display-grid grid-gap margin-horizontal-auto">
 		<form method="POST" class="display-grid grid-gap">
 			<div>
 				<label for="username">
@@ -23,7 +23,7 @@
 					<input type="password" name="password" id="password"  minlength="3" required class="margin-top padding-xs full-width">
 				</label>
 			</div>
-			<button class="margin-top button half-width margin-auto">Se connecter</button>
+			<button class="margin-top button">Se connecter</button>
 		</form>
 	</section>
 </div>

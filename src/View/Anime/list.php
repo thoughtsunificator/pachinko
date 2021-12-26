@@ -1,3 +1,16 @@
+<?php
+use \Core\Request;
+$filterA = array_merge( $_GET, array( 'sort' => "title" ));
+$filterB = array_merge( $_GET, array( 'sort' => "start_date" ));
+if (isset(Request::$params["order"]) && (in_array(Request::$params["order"], ["asc", "desc"]))) {
+	$order = Request::$params["order"] === "asc" ? "desc" : "asc";
+} else {
+	$order = "desc";
+}
+$filterA["order"] = $order;
+$filterB["order"] = $order;
+?>
+
 <div id="search-results" class="wrap">
 	<h2>Resultat de la recherche</h2>
 	<?php	if(count($results) >= 1):	?>
@@ -5,8 +18,8 @@
 		<span>
 		Trier par:
 		</span>
-		<a class="filter" href="?<?= http_build_query(array_merge( $_GET, array( 'sort' => "title", 'order' => (isset($_GET["order"]) === true && $_GET["order"] === "asc" ? "desc" : (isset($_GET["order"]) === true && $_GET["order"] === "desc" ? "asc" : "desc") )))) ?>">Titre</a>
-		<a class="filter" href="?<?= http_build_query(array_merge( $_GET, array( 'sort' => "start_date", 'order' => (isset($_GET["order"]) === true && $_GET["order"] === "asc" ? "desc" : (isset($_GET["order"]) === true && $_GET["order"] === "desc" ? "asc" : "desc") )))) ?>">Date</a>
+		<a class="filter" href="?<?= http_build_query($filterA) ?>">Titre</a>
+		<a class="filter" href="?<?= http_build_query($filterB) ?>">Date</a>
 	</div>
 	<div class="results">
 		<?php	foreach($results as $anime):	?>

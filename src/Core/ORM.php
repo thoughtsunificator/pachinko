@@ -3,14 +3,17 @@
 namespace Core;
 
 use \Exception;
+use \Core\Debug;
 
 final class ORM {
 
+	public static $queries = [];
+
 	private function __construct() {}
-	
+
 	/**
 	 * Insert a row into the database
-	 * @param  [Entity] 	$model 
+	 * @param  [Entity] 	$model
 	 * @return [integer]  The id of row that is inserted
 	 */
 	public static function create($model) {
@@ -19,6 +22,7 @@ final class ORM {
 		$columnString = implode(",", array_keys($fields));
 		$valuesString = implode(",", array_fill(0, count($fields), "?"));
 		$query = "INSERT INTO " . $model::TABLE_NAME . " ($columnString) VALUES ($valuesString)";
+		Debug::logQuery($query, $fields);
 		$statement = $instance->prepare($query);
 		$statement->execute(array_values($fields));
 		return $instance->lastInsertId();
@@ -27,7 +31,7 @@ final class ORM {
 	/**
 	 * Select a row into the database
 	 * @param  [string] 			$table  The name of the table
-	 * @param  [array] 				$params 
+	 * @param  [array] 				$params
 	 * @return [PDOStatement]
 	 */
 	public static function read($model, $params) {
@@ -75,6 +79,7 @@ final class ORM {
 		if (array_key_exists("limit", $params) === true) {
 			$query .= " limit ". $params["limit"];
 		}
+		Debug::logQuery($query, $values);
 		$statement = $instance->prepare($query);
 		$statement->execute($values);
 		return $statement;
@@ -96,6 +101,7 @@ final class ORM {
 		array_push($values, $model->getField($model::PRIMARY_KEY));
 		$columnsText = implode(", ", $columns);
 		$query = "UPDATE ".$model::TABLE_NAME." set $columnsText where " . $model::PRIMARY_KEY . "=?";
+		Debug::logQuery($query);
 		$statement = $instance->prepare($query);
 		return $statement;
 	}
@@ -108,6 +114,7 @@ final class ORM {
 	public static function delete($model) {
 		$instance = Database::getPDO();
 		$query = "DELETE FROM " . $model::TABLE_NAME . " where " . $model::PRIMARY_KEY . "=?";
+		Debug::logQuery($query);
 		$statement = $instance->prepare($query);
 		$statement->execute([$model->getField($model::PRIMARY_KEY)]);
 		return $statement;
