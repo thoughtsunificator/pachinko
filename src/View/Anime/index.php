@@ -5,8 +5,18 @@
 	</p>
 	<?php endif?>
 	<div class="display-grid template-2colauto1fr grid-column-gap-xxl">
-		<div class="display-grid grid-auto-rows-maxcontent">			
-			<img src="/resource/image/anime/<?= $anime->getField("cover") !== null && $anime->getField("cover") !== "" ? $anime->getField("cover") : "default.png" ?>" alt="Image du anime">
+		<div class="display-grid grid-auto-rows-maxcontent">
+			<?php
+			$image = "/resource/image/anime/default.png";
+			if($anime->getField("cover") !== null && $anime->getField("cover") !== "") {
+				if(str_starts_with($anime->getField("cover"), "http")) {
+					$image = $anime->getField("cover");
+				} else {
+					$image = "/resource/image/anime/". $anime->getField("cover");
+				}
+			}
+			?>
+			<img src="<?= $image ?>" alt="Image du anime">
 			<div class="border-width-1 border-style-solid border-bottom padding-vertical-2xs">
 				<div class="color-silver">Type</div>
 				<div><a href="/search/anime?type=<?= $anime->getField('type') ?>"><?= $anime->getField('type') ?></a></div>

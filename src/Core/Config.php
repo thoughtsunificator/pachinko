@@ -21,6 +21,7 @@ final class Config {
 	public static $DATABASE_PORT = 3306;
 
 	// Pagination
+	public static $PAGES_SHOWN = 5;
 	public static $RESULTS_PER_PAGE = 50;
 
 	// Admin

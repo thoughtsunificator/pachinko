@@ -270,3 +270,7 @@ main a:hover {
 	border: 1px solid #a69898;
 	color: #e6e2e2;
 }
+
+.pagination a.active {
+	background-color: #2b2727;
+}
