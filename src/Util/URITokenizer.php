@@ -20,8 +20,8 @@ final class URITokenizer {
 
 	/**
 	 * Create tokens out of an URI
-	 * @param  [string] $text [description]
-	 * @return [array]       [description]
+	 * @param  [string] $text
+	 * @return [array]
 	 */
 	public static function tokenize ($text) {
 		$tokens = [];

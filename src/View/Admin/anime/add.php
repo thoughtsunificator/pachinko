@@ -66,8 +66,8 @@
 			</label>	
 		</div>
 	<div class="margin-top">
-			<button class="padding-vertical-small padding-horizontal background-color-dustygray border-width-1 border-style-solid border-color-dustygray2 color-bonjour hover-background-color-dustygray2">Ajouter</button>
-			<button type="reset" class="padding-vertical-small padding-horizontal background-color-dustygray border-width-1 border-style-solid border-color-dustygray2 color-bonjour hover-background-color-dustygray2">Reset</button>
+			<button class="button">Ajouter</button>
+			<button type="reset" class="button">Reset</button>
 	</div>
 	</form>
 </div>

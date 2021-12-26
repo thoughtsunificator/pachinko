@@ -8,8 +8,8 @@ final class TemplateTokenizer {
 
 	/**
 	 * Create tokens out of a template
-	 * @param  [string] $text [description]
-	 * @return [array]       [description]
+	 * @param  [string] $text
+	 * @return [array]
 	 */
 	public static function tokenize ($text) {
 	

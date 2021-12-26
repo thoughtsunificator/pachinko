@@ -31,7 +31,7 @@ UserInterface.model({
 				className: "padding-vertical full-width text-indent background-color-seethrough",
 				children: [{
 					tagName: "a",
-					className: "color-white hover-text-decoration-underline",
+					className: "color-white",
 					href: image.getLink(),
 					textContent: image.getText()
 				}]

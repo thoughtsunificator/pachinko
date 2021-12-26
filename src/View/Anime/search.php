@@ -6,9 +6,8 @@
 		<div>
 			<label for="title">
 				Titre : 
-				<div class="margin-top display-grid grid-auto-flow-column template-2col1frauto">
+				<div class="margin-top">
 					<input type="text" class="padding full-width" placeholder="Titre de l'anime, ex : Absolute Duo" id="title" name="title" value="">
-					<button class="background-color-dustygray border-width-1 border-style-solid border-color-dustygray2 color-bonjour hover-background-color-dustygray2">Rechercher</button>
 				</div>
 			</label>
 		</div>		
@@ -71,8 +70,8 @@
 			</label>
 		</div>
 		<div class="display-grid grid-auto-flow-column justify-content-spacebetween">
-			<button class="padding-vertical-small padding-horizontal background-color-dustygray border-width-1 border-style-solid border-color-dustygray2 color-bonjour hover-background-color-dustygray2">Rechercher</button>
-			<button class="padding-vertical-small padding-horizontal background-color-dustygray border-width-1 border-style-solid border-color-dustygray2 color-bonjour hover-background-color-dustygray2" type="reset">Reset</button>
+			<button class="button">Rechercher</button>
+			<button class="button" type="reset">Reset</button>
 		</div>
 	</form>
 </div>

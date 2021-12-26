@@ -9,7 +9,7 @@
 			<img src="/resource/image/anime/<?= $anime->getField("cover") !== null && $anime->getField("cover") !== "" ? $anime->getField("cover") : "default.png" ?>" alt="Image du anime">
 			<div class="border-width-1 border-style-solid border-bottom padding-vertical-2xs">
 				<div class="color-silver">Type</div>
-				<div><a href="/type/<?= $anime->getField('type') ?>"><?= $anime->getField('type') ?></a></div>
+				<div><a href="/search/anime?type=<?= $anime->getField('type') ?>"><?= $anime->getField('type') ?></a></div>
 			</div>
 			<?php if($anime->getField('premiered') !== null):?>
 			<div class="border-width-1 border-style-solid border-bottom padding-vertical-2xs">
@@ -61,7 +61,7 @@
 			<div class="margin-top border-width-1 border-style-solid border-top padding-vertical display-grid template-2col grid-gap-xxs">
 					<?php if(count($genres) >= 1): ?>
 					<div><u>Genre</u> :<div><?= implode(", ", array_map(function($meta) {
-						return "<a href='/meta/".$meta->getField("id_meta")."'>".$meta->getField("value")."</a>";
+						return "<a href='/search/anime?genre[]=".$meta->getField("value")."'>".$meta->getField("value")."</a>";
 					}, $genres))	?></div></div>
 					<?php endif?>
 					<?php if(count($synonyms) >= 1): ?>
@@ -71,12 +71,12 @@
 					<?php endif?>
 					<?php if(count($producers) >= 1): ?>
 					<div><u>Producer</u> :<div><?= implode(", ", array_map(function($meta) {
-						return "<a href='/meta/".$meta->getField("id_meta")."'>".$meta->getField("value")."</a>";
+						return "<a href='/search/anime?producer=".$meta->getField("value")."'>".$meta->getField("value")."</a>";
 					}, $producers))	?></div></div>
 					<?php endif?>
 					<?php if(count($studios) >= 1): ?>
 					<div><u>Studio</u> :<div><?= implode(", ", array_map(function($meta) {
-						return "<a href='/meta/".$meta->getField("id_meta")."'>".$meta->getField("value")."</a>";
+						return "<a href='/search/anime?studio=".$meta->getField("value")."'>".$meta->getField("value")."</a>";
 					}, $studios))	?></div></div>
 					<?php endif?>
 			</div>
@@ -131,7 +131,7 @@
 					<textarea class="full-width background-color-mineshaft border-width-1 border-style-solid border-color-emperor color-white padding-xs" name="review" id="review" required minlength="10"></textarea>
 			</div>
 			<div class="display-grid justify-content-flexend margin-top">
-					<button class="padding-vertical-xs padding-horizontal background-color-dustygray border-width-1 border-style-solid border-color-dustygray2 color-bonjour hover-background-color-dustygray2">Valider</button>
+					<button class="button">Valider</button>
 			</div>
 		</form>
 	</div>

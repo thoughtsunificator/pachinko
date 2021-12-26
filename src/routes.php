@@ -15,6 +15,7 @@ Router::get("/logout", ["controller" => "UserController", "action" => "logout"])
 Router::get("/anime", ["controller" => "AnimeController", "action" => "search"]);
 Router::get("/member", ["controller" => "MembreController", "action" => "search"]);
 
+Router::post('/search', ['controller' => "SearchController", 'action' => 'index']);
 
 Router::get('/search/anime', ['controller' => "AnimeController", 'action' => 'list']);
 

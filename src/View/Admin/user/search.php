@@ -9,7 +9,7 @@
 			</label>
 		</div>
 		<div>
-			<button class="padding-vertical-small padding-horizontal background-color-dustygray border-width-1 border-style-solid border-color-dustygray2 color-bonjour hover-background-color-dustygray2">Rechercher</button>
+			<button class="button">Rechercher</button>
 		</div>
 	</form>
 </div>

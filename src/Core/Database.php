@@ -16,7 +16,7 @@ final class Database {
 	private static $_pdo;
 
 	/**
-	 * @return [PDO] [description]
+	 * @return [PDO]
 	 */
 	public static function getPDO() {
 		if (self::$_pdo === null) {

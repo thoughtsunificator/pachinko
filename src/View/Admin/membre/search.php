@@ -20,8 +20,8 @@
 			<input class="padding-xs full-width" type="number" name="age" id="age" value="" placeholder="ex : 18">
 		</div>
 		<div>
-			<button class="padding-vertical-small padding-horizontal background-color-dustygray border-width-1 border-style-solid border-color-dustygray2 color-bonjour hover-background-color-dustygray2">Rechercher</button>
-			<button class="padding-vertical-small padding-horizontal background-color-dustygray border-width-1 border-style-solid border-color-dustygray2 color-bonjour hover-background-color-dustygray2" type="reset">Reset</button>
+			<button class="button">Rechercher</button>
+			<button class="button" type="reset">Reset</button>
 		</div>
 	</form>
 </div>
