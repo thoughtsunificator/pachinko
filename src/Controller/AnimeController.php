@@ -127,7 +127,7 @@ class AnimeController extends Controller {
 
 		$results = $entity::findAll($params);
 		$this->render("list", [
-			"title" => "Recherche d'anime", 
+			"title" => "Anime",
 			"results" => $results,
 			"totalPage" => $totalPage,
 			"page" => $page
@@ -151,7 +151,7 @@ class AnimeController extends Controller {
 			"order" => Request::$params["sort"]." ".Request::$params["order"]
 		]));
 		$this->render("list", [
-			"title" => "Recherche d'anime", 
+			"title" => "Anime",
 			"results" => $results,
 			"totalPage" => $totalPage,
 			"page" => $page
