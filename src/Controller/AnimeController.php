@@ -58,9 +58,9 @@ class AnimeController extends Controller {
 		$this->render("search", [
 			"title" => "Anime",
 			"types" => Anime::findAll(["column" => "DISTINCT type"]),
-			"genres" => AnimeMeta::findAll(["where" => ["name" => "genre"], "group" => "value"]),
-			"producers" => AnimeMeta::findAll(["where" => ["name" => "producer"], "group" => "value"]),
-			"studios" => AnimeMeta::findAll(["where" => ["name" => "studio"], "group" => "value"])
+			"genres" => AnimeMeta::findAll(["column" => "value", "where" => ["name" => "genre"], "group" => "value"]),
+			"producers" => AnimeMeta::findAll(["column" => "value", "where" => ["name" => "producer"], "group" => "value"]),
+			"studios" => AnimeMeta::findAll(["column" => "value", "where" => ["name" => "studio"], "group" => "value"])
 		]);
 	}
 
@@ -107,6 +107,11 @@ class AnimeController extends Controller {
 			array_push($joins, "INNER JOIN anime on anime.id_anime = anime_meta.id_anime");
 		}
 		$filter = ["where" => $fields, "operator" => $operators, "join" => $joins];
+		if($entity === AnimeMeta::class) {
+			$filter["column"] = "distinct anime.id_anime, title, cover";
+		} else {
+			$filter["column"] = "id_anime, title, cover";
+		}
 		$count = $entity::count($filter);
 		$results_per_page = Config::$RESULTS_PER_PAGE;
 		$totalPage = ceil($count / $results_per_page);
@@ -132,38 +137,6 @@ class AnimeController extends Controller {
 			"totalPage" => $totalPage,
 			"page" => $page
 		]);
-	}
-
-	/**
-	 * GET /type/{name}
-	 */
-	public function type($name) {
-		$filter = ["where" => ["type" => $name]];
-		$count = Anime::count($filter);
-		$results_per_page = Config::$RESULTS_PER_PAGE;
-		$totalPage = ceil($count / $results_per_page);
-		$page = 1;
-		if(array_key_exists("page", Request::$params)) {
-			$page = (int) min($totalPage, max(Request::$params["page"], 1));
-		}
-		$results = Anime::findAll(array_merge($filter, [
-			"limit" => ($page - 1) * $results_per_page . ",$results_per_page", 
-			"order" => Request::$params["sort"]." ".Request::$params["order"]
-		]));
-		$this->render("list", [
-			"title" => "Anime",
-			"results" => $results,
-			"totalPage" => $totalPage,
-			"page" => $page
-		]);
-	}
-
-
-	/**
-	 * GET /meta/{id}
-	 */
-	public function meta($id) {
-		echo "Work in progress";
 	}
 
 }
