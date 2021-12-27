@@ -4,7 +4,7 @@
 	<div class="results">
 	<?php	foreach($results as $result):	?>
 		<div class="result">
-		<a href="/users/<?= $result->getField("membre")->getField('id_membre'); ?>/<?= urlencode(htmlspecialchars($result->getField('nom'). " ". $result->getField('prenom')))?>">
+		<a href="/users/<?= $result->getField("membre")->getField('id_membre'); ?>/<?= $result->getSlug(); ?>">
 			<?php
 			$image = "/resource/image/avatar/default.png";
 			if($result->getField("avatar") !== null && $result->getField("avatar") !== "") {

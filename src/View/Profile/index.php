@@ -4,7 +4,7 @@
 		<?=$message;?>
 	</p>
 	<?php endif; ?>
-	<h2><?= htmlspecialchars($membre->getField("fiche_personne")->getField('nom')); ?> <?= htmlspecialchars($membre->getField("fiche_personne")->getField('prenom')); ?></h2>
+	<h2><?= $membre->getField("fiche_personne")->getName() ?></h2>
 	<div class="display-grid template-2colauto1fr grid-gap grid-column-gap-xxl margin-top">
 		<?php
 		$image = "/resource/image/avatar/default.png";

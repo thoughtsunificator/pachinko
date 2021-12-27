@@ -121,7 +121,7 @@
 				</div>
 					</div>
 						<div>
-							<img  width="60"  src="<?= htmlspecialchars($review['avatar']) !== null ? ("./resource/image/avatar/". $review["avatar"]) : ("https://api.adorable.io/avatars/70/". urlencode(htmlspecialchars($review['fiche_personne_nom'])) . "@adorable.png") ?>" alt="Avatar">
+							<img width="60" src="<?= htmlspecialchars($review['avatar']) !== null ? ("./resource/image/avatar/". $review["avatar"]) : ("https://api.adorable.io/avatars/70/". urlencode(htmlspecialchars($review['fiche_personne_nom'])) . "@adorable.png") ?>" alt="Avatar">
 						</div>
 					</div>
 				<div class="padding-xs background-color-hurricane"><?= htmlspecialchars($review['avis']) ?></div>
