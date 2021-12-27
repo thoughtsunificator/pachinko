@@ -34,8 +34,5 @@ Router::get('/admin', ['controller' => "AdminController", 'action' => 'index']);
 Router::get('/anime/{id}', ['controller' => "AnimeController", 'action' => 'index']);
 Router::get('/anime/{id}/{name}', ['controller' => "AnimeController", 'action' => 'index']);
 
-Router::get('/type/{name}', ['controller' => "AnimeController", 'action' => 'type']);
-Router::get('/meta/{id}', ['controller' => "AnimeController", 'action' => 'meta']);
-
 Router::get('/users/{id}', ['controller' => "ProfileController", 'action' => 'index']);
 Router::get('/users/{id}/{name}', ['controller' => "ProfileController", 'action' => 'index']);

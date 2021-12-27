@@ -62,7 +62,7 @@ class ProfileController extends Controller {
 		if(array_key_exists("page", Request::$params)) {
 			$page = (int) min($totalPage, max(Request::$params["page"], 1));
 		}
-		$fiches = FichePersonne::findAll(["where" => $fields, "operator" => $operators, "limit" => ($page - 1) * $results_per_page . ",$results_per_page"]);
+		$fiches = FichePersonne::findAll(["column" => "id_perso, nom, prenom, avatar", "where" => $fields, "operator" => $operators, "limit" => ($page - 1) * $results_per_page . ",$results_per_page"]);
 		foreach ($fiches as &$fiche) {
 			$fiche->setField("membre", Profile::findOne(["where" => ["id_fiche_perso" => $fiche->getField("id_perso")]]));
 		}
