@@ -24,7 +24,7 @@
 		</div>
 		<div>
 				Genre :
-					<div class="margin-top display-grid template-5col padding background-color-mineshaft">
+					<div style="background-color: #2b2727" class="margin-top display-grid template-5col padding">
 						<?php foreach ($genres as $genre): ?>
 						<div>
 							<label for="genre-<?= $genre->getField("value") ?>">

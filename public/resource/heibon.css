@@ -170,6 +170,11 @@ a:hover {
 	border-radius: var(--SIZE_XXS);
 }
 
+main input, main select {
+	background-color: #c0c0c0;
+	border: 0;
+}
+
 main {
 	margin-top: var(--SIZE_XL);
 }
