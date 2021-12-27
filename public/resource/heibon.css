@@ -62,7 +62,8 @@ a:hover {
 	padding-right: var(--SIZE_MEDIUM);
 	background-color: #9b8d8d;
 	border: 1px solid #a69898;
-	color: #e6e2e2;
+	color: #323131;
+	border-bottom: 2px solid #7a7979;
 }
 
 .button:hover {
