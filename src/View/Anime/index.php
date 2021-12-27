@@ -138,7 +138,7 @@
 		<form class="margin-top" action="?id=<?= $anime->getField('id_anime') ?>&action=add_review" method="POST">
 			<h3>It's your turn.</h3>
 			<div class="margin-top">
-					<textarea class="full-width background-color-mineshaft border-width-1 border-style-solid border-color-emperor color-white padding-xs" name="review" id="review" required minlength="10"></textarea>
+					<textarea style="background-color: #2b2727" class="full-width border-width-1 border-style-solid border-color-emperor color-white padding-xs" name="review" id="review" required minlength="10"></textarea>
 			</div>
 			<div class="display-grid justify-content-flexend margin-top">
 					<button class="button">Send</button>
