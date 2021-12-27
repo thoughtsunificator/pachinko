@@ -54,7 +54,7 @@
 				<h3>Anime</h3>
 				<nav>
 				<?php foreach ($latestAnime as $anime): ?>
-					<div>* <a href="/anime/<?=$anime->getField('id_anime');?>/<?= urlencode(htmlspecialchars($anime->getField("title"))) ?>"><?= htmlspecialchars($anime->getField("title")); ?></a></div>
+					<div>* <a href="/anime/<?=$anime->getField('id_anime');?>/<?= $anime->getSlug() ?>"><?= htmlspecialchars($anime->getField("title")); ?></a></div>
 				<?php endforeach;  ?>
 				</nav>
 			</section>
