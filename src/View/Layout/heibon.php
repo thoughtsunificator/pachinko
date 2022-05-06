@@ -72,7 +72,7 @@
 </footer>
 <?php
 if($config::$ENV === "dev" && $config::$DEBUG_BAR) {
-	require("/app/src/View/Partial/debug.php");
+	require(__DIR__. "/../../View/Partial/debug.php");
 }
 ?>
 </body>
