@@ -11,12 +11,7 @@ final class Config {
 	public static $REGISTRATION_ENABLED = true;
 	public static $DEBUG_BAR = true;
 
-	public static $DATABASE_HOST = "localhost";
-	public static $DATABASE_DBNAME = "pachinko";
-	public static $DATABASE_USER = "root";
-	public static $DATABASE_PASSWORD = "";
-	public static $DATABASE_CHARSET = "utf8mb4";
-	public static $DATABASE_PORT = 3306;
+	public static $DATABASE_URL = "mysql:host=localhost;dbname=pachinko;charset=utf8mb4;user=root;password=";
 
 	public static $PAGES_SHOWN = 5;
 	public static $RESULTS_PER_PAGE = 50;
