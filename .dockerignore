@@ -1,0 +1,18 @@
+# flyctl launch added from .gitignore
+**/vendor
+**/.env.json
+
+# flyctl launch added from vendor/heroku/heroku-buildpack-php/support/devcenter/.gitignore
+!vendor/heroku/heroku-buildpack-php/support/devcenter/**/composer.lock
+vendor/heroku/heroku-buildpack-php/support/devcenter/**/vendor
+
+# flyctl launch added from vendor/heroku/heroku-buildpack-php/test/fixtures/.gitignore
+!vendor/heroku/heroku-buildpack-php/test/fixtures/**/composer.lock
+vendor/heroku/heroku-buildpack-php/test/fixtures/**/vendor
+
+# flyctl launch added from vendor/heroku/heroku-buildpack-php/test/fixtures/ci/phpunit/.gitignore
+vendor/heroku/heroku-buildpack-php/test/fixtures/ci/phpunit/**/.phpunit.result.cache
+
+# flyctl launch added from vendor/heroku/heroku-buildpack-php/test/var/.gitignore
+vendor/heroku/heroku-buildpack-php/test/var/**/log/*
+fly.toml
