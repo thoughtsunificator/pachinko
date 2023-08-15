@@ -15,7 +15,7 @@
 				}
 			}
 			?>
-			<img width="150" src="<?= htmlspecialchars($image) ?>" alt="Avatar du membre"></a>
+			<img onerror="this.onerror=null; this.src='/resource/image/anime/default.png'" width="150" src="<?= htmlspecialchars($image) ?>" alt="Avatar du membre"></a>
 			<div><?= htmlspecialchars($result->getField('nom')); ?> <?= htmlspecialchars($result->getField('prenom')); ?></div>
 		</div>
 	<?php	endforeach;	?>

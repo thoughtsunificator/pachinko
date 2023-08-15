@@ -35,7 +35,7 @@ $filterB["order"] = $order;
 			}
 			?>
 			<a href="/anime/<?=$anime->getField('id_anime');?>/<?= htmlspecialchars(trim(preg_replace('/[^A-Za-z0-9-]+/', '+', $anime->getField("title")))) ?>">
-				<img width="150" src="<?= htmlspecialchars($image) ?>" alt="Anime cover"></a>
+				<img onerror="this.onerror=null; this.src='/resource/image/anime/default.png'" width="150" src="<?= htmlspecialchars($image) ?>" alt="Anime cover"></a>
 				<div>
 					<?= htmlspecialchars($anime->getField('title')); ?>
 				</div>

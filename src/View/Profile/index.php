@@ -16,12 +16,12 @@
 			}
 		}
 		?>
-		<img width="200" class="border-width-1 border-style-solid border-color-emperor" src="<?= htmlspecialchars($image) ?>" alt="User avatar">
+		<img onerror="this.onerror=null; this.src='/resource/image/anime/default.png'" width="200" class="border-width-1 border-style-solid border-color-emperor" src="<?= htmlspecialchars($image) ?>" alt="User avatar">
 		<div>
 			Hello..
 		</div>
 	</div>
-	<div class="margin-top-xl">	
+	<div class="margin-top-xl">
 		<section>
 			<div class="display-grid template-2col1frauto">
 				<h3>Watched</h3>
@@ -47,7 +47,7 @@
 					}
 					?>
 					<a href="anime-detail.php?id=<?= $anime->getField('id_anime'); ?>">
-						<img width="150" src="<?= htmlspecialchars($image) ?>" alt="Anime cover">
+						<img onerror="this.onerror=null; this.src='/resource/image/anime/default.png'" width="150" src="<?= htmlspecialchars($image) ?>" alt="Anime cover">
 					</a>
 					</div>
 					<div>
