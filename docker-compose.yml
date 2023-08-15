@@ -2,13 +2,12 @@ version: "3.1"
 
 services:
   nginx:
-    image: nginx:latest
+    image: nginx:1.23
     ports:
       - "8080:80"
     volumes:
       - ./:/app
       - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
-      - ./logs/nginx:/var/log/nginx
     links:
       - php
 
@@ -17,7 +16,6 @@ services:
     volumes:
       - ./:/app
     environment:
-      - XDEBUG_CONFIG=remote_host=host.docker.internal
       - DATABASE_HOST=mariadb
       - DATABASE_USER=pachinko
       - DATABASE_PASSWORD=pachinko
@@ -25,10 +23,8 @@ services:
       - mariadb
 
   mariadb:
-    image: mariadb:latest
+    image: mariadb:10.7
     volumes:
-      - ./data/mysql:/var/lib/mysql
-      - ./logs/mysql:/var/log/mysql
       - ./pachinko.sql:/docker-entrypoint-initdb.d/dump.sql
     environment:
       - MYSQL_DATABASE=pachinko
