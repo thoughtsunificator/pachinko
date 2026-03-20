@@ -24,10 +24,10 @@ final class Database {
 				self::$_pdo = new PDO(Config::$DATABASE_URL);
 				self::$_pdo->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
 			} catch(\Exception $ex) {
+				print("Database is unreachable.");
 				if(Config::$ENV === "dev") {
 					throw $ex;
 				} else {
-					print("Database is unreachable.");
 					exit();
 				}
 			}
