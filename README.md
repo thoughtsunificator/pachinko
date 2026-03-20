@@ -5,7 +5,7 @@
 ## Prerequisites
 
 - MariaDB 10.4
-- php 7.4.1 (with pdo_mysql)
+- php 8.2 (with pdo_mysql)
 
 ## Installing
 
