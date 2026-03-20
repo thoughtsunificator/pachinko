@@ -16,7 +16,7 @@ services:
     volumes:
       - ./:/app
     environment:
-      - DATABASE_URL=mysql:host=localhost;dbname=pachinko;charset=utf8mb4;user=pachinko;password=pachinko
+      - DATABASE_URL=mysql:host=mariadb;dbname=pachinko;charset=utf8mb4;user=pachinko;password=pachinko
     links:
       - mariadb
 
